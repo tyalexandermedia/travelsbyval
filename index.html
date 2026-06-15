@@ -66,48 +66,42 @@
     footer { background: var(--charcoal); color: var(--cream); padding: 2rem 0; text-align: center; font-size: 0.85rem; }
     footer a { color: var(--gold); margin: 0 0.5rem; }
 
-    /* WIZARD FORM */
+    /* FORM */
     .contact { background: var(--olive); color: var(--cream); padding: 3rem 0; }
-    .contact h2 { color: var(--cream); margin-bottom: 0.5rem; }
-    .contact p { color: rgba(245,240,232,0.8); margin-bottom: 1.5rem; font-size: 0.95rem; }
+    .contact h2 { color: var(--cream); }
     .contact a { color: var(--sand); }
-    .wizard { max-width: 580px; }
-    .wiz-steps { display: flex; align-items: center; margin-bottom: 2rem; gap: 0; }
-    .wiz-step { display: flex; flex-direction: column; align-items: center; gap: 5px; flex: 0 0 auto; }
-    .wiz-dot { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Josefin Sans', sans-serif; font-size: 12px; letter-spacing: 1px; font-weight: 600; background: rgba(255,255,255,0.1); border: 1.5px solid rgba(212,184,150,0.35); color: rgba(245,240,232,0.5); transition: all 0.3s; }
-    .wiz-step span { font-family: 'Josefin Sans', sans-serif; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(245,240,232,0.4); transition: color 0.3s; white-space: nowrap; }
-    .wiz-step.active .wiz-dot { background: var(--terracotta); border-color: var(--terracotta); color: #FAF6EE; }
-    .wiz-step.active span { color: rgba(245,240,232,0.95); }
-    .wiz-step.done .wiz-dot { background: #3a5030; border-color: var(--sand); color: var(--sand); }
-    .wiz-step.done span { color: rgba(245,240,232,0.7); }
-    .wiz-divider { flex: 1; height: 1px; background: rgba(212,184,150,0.22); margin: 0 8px; margin-bottom: 20px; }
-    .wiz-panel { display: none; animation: wiz-in 0.35s ease; }
-    .wiz-panel.active { display: block; }
-    @keyframes wiz-in { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: translateX(0); } }
-    .wiz-hint { font-family: 'Raleway', sans-serif; font-size: 0.9rem; color: rgba(245,240,232,0.6); margin-bottom: 1.2rem; font-style: italic; }
-    .fld-grp { display: flex; flex-direction: column; gap: 5px; margin-bottom: 0.9rem; }
-    .fld-lbl { font-family: 'Josefin Sans', sans-serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand); }
-    .fld-inp, .fld-sel, .fld-ta { width: 100%; padding: 13px 15px; background: rgba(255,255,255,0.07); border: 1px solid rgba(212,184,150,0.3); border-radius: 4px; font-family: 'Raleway', sans-serif; font-size: 0.88rem; color: var(--cream); transition: border-color 0.2s; }
-    .fld-inp::placeholder, .fld-ta::placeholder { color: rgba(245,240,232,0.35); }
-    .fld-inp:focus, .fld-sel:focus, .fld-ta:focus { outline: none; border-color: var(--terracotta); }
-    .fld-sel { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%23D4B896' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 13px center; padding-right: 34px; cursor: pointer; }
-    .fld-sel option { background: #2a3d24; color: var(--cream); }
-    .fld-ta { resize: vertical; font-family: 'Raleway', sans-serif; }
-    .fld-2r { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .wiz-nav { margin-top: 1.2rem; }
-    .wiz-nav-split { display: flex; gap: 10px; justify-content: space-between; align-items: center; }
-    .wiz-nav-split .back-btn { flex: 0 0 auto; }
-    .wiz-nav-split .next-btn, .wiz-nav-split .submit-btn { flex: 1; }
-    .btn-wiz { display: inline-flex; align-items: center; justify-content: center; font-family: 'Josefin Sans', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; border: none; border-radius: 4px; cursor: pointer; padding: 13px 24px; min-height: 48px; transition: opacity 0.2s, transform 0.12s; width: 100%; }
-    .btn-wiz:hover { opacity: 0.88; transform: translateY(-1px); }
-    .btn-primary { background: var(--terracotta); color: var(--cream); }
-    .btn-ghost { background: transparent; border: 1.5px solid rgba(212,184,150,0.4); color: rgba(245,240,232,0.75); }
-    .wiz-success { text-align: center; padding: 2rem 0 1rem; }
-    .wiz-check { width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,0.12); color: var(--sand); display: flex; align-items: center; justify-content: center; font-size: 26px; margin: 0 auto 1rem; }
-    .wiz-thanks { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--cream); margin-bottom: 0.75rem; }
-    .wiz-msg { font-size: 0.9rem; color: rgba(245,240,232,0.72); line-height: 1.75; max-width: 380px; margin: 0 auto 0.75rem; }
-    .wiz-sig { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.4rem; color: var(--gold); }
-    .wiz-fine { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: rgba(245,240,232,0.4); text-align: center; margin-top: 1rem; }
+    .trip-form { max-width: 540px; margin-top: 1.5rem; }
+    .step-bar { display: flex; align-items: center; gap: 0; margin-bottom: 1.75rem; }
+    .step { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 0 0 auto; }
+    .step-dot { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid rgba(212,184,150,.35); background: rgba(255,255,255,.08); color: rgba(245,240,232,.45); font-family: 'Josefin Sans', sans-serif; font-size: 12px; letter-spacing: 1px; display: flex; align-items: center; justify-content: center; transition: all .25s; }
+    .step-label { font-family: 'Josefin Sans', sans-serif; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(245,240,232,.4); transition: color .25s; white-space: nowrap; }
+    .step.on .step-dot { background: var(--terracotta); border-color: var(--terracotta); color: var(--cream); }
+    .step.on .step-label { color: rgba(245,240,232,.9); }
+    .step.done .step-dot { background: rgba(255,255,255,.12); border-color: rgba(212,184,150,.5); color: var(--sand); }
+    .step-line { flex: 1; height: 1px; background: rgba(212,184,150,.2); margin: 0 6px 20px; }
+    .panel { display: none; }
+    .panel.on { display: block; animation: fadein .3s ease; }
+    @keyframes fadein { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
+    .hint { font-size: .9rem; color: rgba(245,240,232,.6); font-style: italic; margin-bottom: 1.2rem; }
+    .f-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: .85rem; }
+    .f-label { font-family: 'Josefin Sans', sans-serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand); }
+    .f-inp, .f-sel, .f-ta { width: 100%; padding: 12px 14px; background: rgba(255,255,255,.07); border: 1px solid rgba(212,184,150,.28); border-radius: 4px; font-family: 'Raleway', sans-serif; font-size: .88rem; color: var(--cream); outline: none; transition: border-color .18s; }
+    .f-inp::placeholder, .f-ta::placeholder { color: rgba(245,240,232,.3); }
+    .f-inp:focus, .f-sel:focus, .f-ta:focus { border-color: var(--terracotta); }
+    .f-sel { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23D4B896' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; cursor: pointer; }
+    .f-sel option { background: #2a3d24; color: var(--cream); }
+    .f-ta { resize: vertical; font-family: 'Raleway', sans-serif; }
+    .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .f-nav { margin-top: 1.1rem; display: flex; gap: 8px; }
+    .f-nav .btn { font-size: .75rem; min-height: 44px; padding: 0 20px; border: none; cursor: pointer; }
+    .btn-back { background: transparent; border: 1.5px solid rgba(212,184,150,.35) !important; color: rgba(245,240,232,.7); flex: 0 0 auto; }
+    .btn-back:hover { border-color: rgba(212,184,150,.6) !important; color: var(--cream); }
+    .btn-next, .btn-submit { flex: 1; }
+    .success-screen { text-align: center; padding: 1.5rem 0; }
+    .success-icon { font-size: 2rem; margin-bottom: .75rem; }
+    .success-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--cream); margin-bottom: .5rem; }
+    .success-msg { font-size: .9rem; color: rgba(245,240,232,.7); line-height: 1.7; }
+    .form-note { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: rgba(245,240,232,.35); text-align: center; margin-top: 1rem; }
   </style>
   <script type="application/ld+json">
   {
@@ -224,76 +218,64 @@
     <section id="book" class="contact">
       <div class="container">
         <p class="label">✦ Free Trip Planning</p>
-        <h2>Ready to Go? <em>Let's Make It Happen.</em></h2>
-        <p>Fill this out and I'll reply within 24 hours with real options, honest pricing, and a plan built around your life. No pressure. No fees. Ever.</p>
+        <h2>Tell Me Where You Want to Go.</h2>
+        <p>Two minutes. I'll handle everything else — flights, hotels, cruises, transfers. Completely free.</p>
 
-        <div class="wizard" id="tripWizard">
-          <!-- Step indicators -->
-          <div class="wiz-steps" aria-label="Form progress">
-            <div class="wiz-step active" data-step="1">
-              <div class="wiz-dot">1</div>
-              <span>Your Info</span>
-            </div>
-            <div class="wiz-divider"></div>
-            <div class="wiz-step" data-step="2">
-              <div class="wiz-dot">2</div>
-              <span>Your Trip</span>
-            </div>
-            <div class="wiz-divider"></div>
-            <div class="wiz-step" data-step="3">
-              <div class="wiz-dot">3</div>
-              <span>Final Details</span>
-            </div>
+        <div class="trip-form" id="tripForm">
+          <div class="step-bar">
+            <div class="step on" data-s="1"><div class="step-dot">1</div><span class="step-label">You</span></div>
+            <div class="step-line"></div>
+            <div class="step" data-s="2"><div class="step-dot">2</div><span class="step-label">The Trip</span></div>
+            <div class="step-line"></div>
+            <div class="step" data-s="3"><div class="step-dot">3</div><span class="step-label">Details</span></div>
           </div>
 
-          <form id="tripForm" action="https://formspree.io/f/xqeowoee" method="POST" novalidate>
-            <input type="hidden" name="_subject" value="New Trip Request - Travels by Val">
+          <form id="tForm" action="https://formspree.io/f/xqeowoee" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="New Trip Request – Travels by Val">
 
-            <!-- Step 1 -->
-            <div class="wiz-panel active" data-panel="1">
-              <p class="wiz-hint">Let's start with the basics — how should I reach you?</p>
-              <div class="fld-grp">
-                <label class="fld-lbl" for="w_name">Your full name</label>
-                <input class="fld-inp" id="w_name" type="text" name="name" placeholder="Jane Smith…" autocomplete="name" required>
+            <div class="panel on" data-p="1">
+              <p class="hint">How should I reach you?</p>
+              <div class="f-group">
+                <label class="f-label" for="f_name">Your name</label>
+                <input class="f-inp" id="f_name" type="text" name="name" placeholder="Jane Smith…" autocomplete="name" required>
               </div>
-              <div class="fld-grp">
-                <label class="fld-lbl" for="w_email">Your email address</label>
-                <input class="fld-inp" id="w_email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+              <div class="f-group">
+                <label class="f-label" for="f_email">Email address</label>
+                <input class="f-inp" id="f_email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
               </div>
-              <div class="wiz-nav">
-                <button type="button" class="btn-wiz btn-primary wiz-next" data-from="1">Next: Your Trip →</button>
+              <div class="f-nav">
+                <button type="button" class="btn btn-p btn-next" data-from="1">Next →</button>
               </div>
             </div>
 
-            <!-- Step 2 -->
-            <div class="wiz-panel" data-panel="2">
-              <p class="wiz-hint">Where do you dream of going?</p>
-              <div class="fld-grp">
-                <label class="fld-lbl" for="w_dest">Dream destination</label>
-                <input class="fld-inp" id="w_dest" type="text" name="destination" placeholder="Italy, Caribbean cruise, Bali…" required>
+            <div class="panel" data-p="2">
+              <p class="hint">Where are you dreaming of?</p>
+              <div class="f-group">
+                <label class="f-label" for="f_dest">Destination</label>
+                <input class="f-inp" id="f_dest" type="text" name="destination" placeholder="Italy, cruise, Bali, Mexico…" required>
               </div>
-              <div class="fld-grp">
-                <label class="fld-lbl" for="w_type">Type of trip</label>
-                <select class="fld-sel" id="w_type" name="trip_type">
-                  <option value="" disabled selected>Select one…</option>
+              <div class="f-group">
+                <label class="f-label" for="f_type">Trip type</label>
+                <select class="f-sel" id="f_type" name="trip_type">
+                  <option value="" disabled selected>What kind of trip?</option>
                   <option>All-Inclusive Resort</option>
                   <option>Cruise</option>
                   <option>International Adventure</option>
                   <option>Family Vacation</option>
                   <option>Honeymoon / Romance</option>
-                  <option>Girls / Group Trip</option>
+                  <option>Group Trip</option>
                   <option>Solo Travel</option>
                   <option>Not sure yet</option>
                 </select>
               </div>
-              <div class="fld-2r">
-                <div class="fld-grp">
-                  <label class="fld-lbl" for="w_dates">Approx. travel dates</label>
-                  <input class="fld-inp" id="w_dates" type="text" name="dates" placeholder="June 2026, flexible…">
+              <div class="f-row">
+                <div class="f-group">
+                  <label class="f-label" for="f_dates">Travel dates</label>
+                  <input class="f-inp" id="f_dates" type="text" name="dates" placeholder="June 2026, flexible…">
                 </div>
-                <div class="fld-grp">
-                  <label class="fld-lbl" for="w_party">Party size</label>
-                  <select class="fld-sel" id="w_party" name="party_size">
+                <div class="f-group">
+                  <label class="f-label" for="f_party">Party size</label>
+                  <select class="f-sel" id="f_party" name="party_size">
                     <option value="" disabled selected>How many?</option>
                     <option>Solo (1)</option>
                     <option>Couple (2)</option>
@@ -303,18 +285,17 @@
                   </select>
                 </div>
               </div>
-              <div class="wiz-nav wiz-nav-split">
-                <button type="button" class="btn-wiz btn-ghost back-btn wiz-back" data-to="1">← Back</button>
-                <button type="button" class="btn-wiz btn-primary next-btn wiz-next" data-from="2">Next: Final Details →</button>
+              <div class="f-nav">
+                <button type="button" class="btn btn-back" data-to="1">← Back</button>
+                <button type="button" class="btn btn-p btn-next" data-from="2">Next →</button>
               </div>
             </div>
 
-            <!-- Step 3 -->
-            <div class="wiz-panel" data-panel="3">
-              <p class="wiz-hint">Almost there — a little context helps me find the perfect fit.</p>
-              <div class="fld-grp">
-                <label class="fld-lbl" for="w_budget">Budget per person</label>
-                <select class="fld-sel" id="w_budget" name="budget">
+            <div class="panel" data-p="3">
+              <p class="hint">Last step — a bit more context helps me find the perfect fit.</p>
+              <div class="f-group">
+                <label class="f-label" for="f_budget">Budget per person</label>
+                <select class="f-sel" id="f_budget" name="budget">
                   <option value="" disabled selected>Approximate range…</option>
                   <option>Under $1,000</option>
                   <option>$1,000 – $2,500</option>
@@ -324,27 +305,24 @@
                   <option>Flexible / Not sure</option>
                 </select>
               </div>
-              <div class="fld-grp">
-                <label class="fld-lbl" for="w_details">What makes this trip special?</label>
-                <textarea class="fld-ta" id="w_details" name="details" rows="3" placeholder="Anniversary, bucket-list moment, traveling with kids, specific activities — anything that matters to you…"></textarea>
+              <div class="f-group">
+                <label class="f-label" for="f_details">Anything else I should know?</label>
+                <textarea class="f-ta" id="f_details" name="details" rows="3" placeholder="Anniversary, kids coming, bucket-list item, must-have experiences…"></textarea>
               </div>
-              <div class="wiz-nav wiz-nav-split">
-                <button type="button" class="btn-wiz btn-ghost back-btn wiz-back" data-to="2">← Back</button>
-                <button type="submit" class="btn-wiz btn-primary submit-btn">✦ Send My Free Trip Request →</button>
+              <div class="f-nav">
+                <button type="button" class="btn btn-back" data-to="2">← Back</button>
+                <button type="submit" class="btn btn-p btn-submit">✦ Send Request →</button>
               </div>
             </div>
 
-            <!-- Success screen -->
-            <div class="wiz-panel wiz-success" data-panel="success">
-              <div class="wiz-check">✓</div>
-              <h3 class="wiz-thanks">Request Received!</h3>
-              <p class="wiz-msg">I'll reply within 24 hours with real options, honest pricing, and a custom plan built around your life.</p>
-              <p class="wiz-sig">— Val</p>
+            <div class="panel success-screen" data-p="success">
+              <div class="success-icon">✓</div>
+              <h3 class="success-title">Got it — I'll be in touch soon.</h3>
+              <p class="success-msg">Expect a reply within 24 hours with real options and honest pricing.</p>
             </div>
           </form>
+          <p class="form-note">Free · 24-hr reply · Zero spam</p>
         </div>
-
-        <p class="wiz-fine">InteleTravel certified · Free · 24-hour reply · Zero spam</p>
       </div>
     </section>
   </main>
@@ -359,78 +337,53 @@
   </footer>
   <script>
   (function () {
-    var form = document.getElementById('tripForm');
-    var wizard = document.getElementById('tripWizard');
-    if (!form || !wizard) return;
-    function panel(id) { return form.querySelector('[data-panel="' + id + '"]'); }
-    function dot(n) { return wizard.querySelector('[data-step="' + n + '"]'); }
+    var f = document.getElementById('tForm');
+    var w = document.getElementById('tripForm');
+    if (!f || !w) return;
+    function panel(id) { return f.querySelector('[data-p="' + id + '"]'); }
+    function step(n) { return w.querySelector('[data-s="' + n + '"]'); }
     function go(from, to) {
-      var old = panel(from), next = panel(to);
-      if (!next) return;
-      if (old) old.classList.remove('active');
-      next.classList.add('active');
+      var a = panel(from), b = panel(to);
+      if (!b) return;
+      if (a) a.classList.remove('on');
+      b.classList.add('on');
       for (var i = 1; i <= 3; i++) {
-        var d = dot(i);
-        if (!d) continue;
-        d.classList.remove('active', 'done');
-        if (i < to) d.classList.add('done');
-        if (i === to) d.classList.add('active');
+        var s = step(i); if (!s) continue;
+        s.classList.remove('on', 'done');
+        if (typeof to === 'number') {
+          if (i < to) s.classList.add('done');
+          if (i === to) s.classList.add('on');
+        }
       }
-      wizard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      w.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    function validate(p) {
-      var ok = true;
+    function ok(p) {
+      var pass = true;
       p.querySelectorAll('[required]').forEach(function (el) {
         if (!el.value.trim()) {
-          ok = false;
-          el.style.borderColor = '#B85835';
-          el.style.boxShadow = '0 0 0 2px rgba(184,88,53,0.25)';
-          el.addEventListener('input', function fix() {
-            el.style.borderColor = '';
-            el.style.boxShadow = '';
-            el.removeEventListener('input', fix);
-          }, { once: true });
+          pass = false; el.style.borderColor = '#B85835';
+          el.addEventListener('input', function fix() { el.style.borderColor = ''; el.removeEventListener('input', fix); }, { once: true });
         }
       });
-      return ok;
+      return pass;
     }
-    wizard.querySelectorAll('.wiz-next').forEach(function (btn) {
+    w.querySelectorAll('.btn-next').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var from = parseInt(btn.dataset.from);
-        if (validate(panel(from))) go(from, from + 1);
+        var n = +btn.dataset.from;
+        if (ok(panel(n))) go(n, n + 1);
       });
     });
-    wizard.querySelectorAll('.wiz-back').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var to = parseInt(btn.dataset.to);
-        go(to + 1, to);
-      });
+    w.querySelectorAll('.btn-back').forEach(function (btn) {
+      btn.addEventListener('click', function () { var n = +btn.dataset.to; go(n + 1, n); });
     });
-    form.addEventListener('submit', function (e) {
+    f.addEventListener('submit', function (e) {
       e.preventDefault();
-      var p3 = panel(3);
-      if (!validate(p3)) return;
-      var submitBtn = p3.querySelector('[type=submit]');
-      submitBtn.textContent = 'Sending…';
-      submitBtn.disabled = true;
-      fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' }
-      }).then(function (r) {
-        if (r.ok) {
-          go(3, 'success');
-          var steps = wizard.querySelector('.wiz-steps');
-          if (steps) steps.style.display = 'none';
-        } else {
-          throw new Error('error');
-        }
-      }).catch(function () {
-        submitBtn.textContent = 'Try again →';
-        submitBtn.disabled = false;
-        submitBtn.style.background = 'rgba(184,88,53,0.65)';
-        setTimeout(function () { submitBtn.textContent = '✦ Send My Free Trip Request →'; submitBtn.style.background = ''; }, 3500);
-      });
+      var p3 = panel(3), sb = p3.querySelector('[type=submit]');
+      if (!ok(p3)) return;
+      sb.textContent = 'Sending…'; sb.disabled = true;
+      fetch(f.action, { method: 'POST', body: new FormData(f), headers: { Accept: 'application/json' } })
+        .then(function (r) { if (r.ok) { go(3, 'success'); w.querySelector('.step-bar').style.display = 'none'; } else throw 0; })
+        .catch(function () { sb.textContent = '✦ Send Request →'; sb.disabled = false; });
     });
   })();
   </script>

@@ -1,382 +1,569 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Travels by Val | Free Travel Advisor | St. Pete, FL</title>
-  <meta name="description" content="Travels by Val is a free travel advisory service led by Valeria Delgado, a certified InteleTravel advisor in St. Petersburg, FL. Personalized trip planning for Tampa Bay and nationwide clients at no cost to you.">
-  <link rel="canonical" href="https://travelsbyval.com">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="Valeria Delgado">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://travelsbyval.com">
-  <meta property="og:title" content="Travels by Val | Free Travel Advisor">
-  <meta property="og:description" content="Personalized, 100% free travel planning with Valeria Delgado, a certified InteleTravel advisor based in St. Petersburg, FL.">
-  <meta property="og:image" content="https://travelsbyval.com/og-image.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:site_name" content="Travels by Val">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Travels by Val | Free Travel Advisor">
-  <meta name="twitter:description" content="Personalized, 100% free travel planning with Valeria Delgado, a certified InteleTravel advisor based in St. Petersburg, FL.">
-  <meta name="twitter:image" content="https://travelsbyval.com/og-image.jpg">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="apple-touch-icon" href="/favicon-180x180.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Raleway:wght@300;400;600&family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --cream: #F5F0E8;
-      --terracotta: #B85835;
-      --gold: #C9974A;
-      --sand: #D4B896;
-      --olive: #4E6040;
-      --charcoal: #1E1408;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Raleway', sans-serif; color: var(--charcoal); background: var(--cream); line-height: 1.6; }
-    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1.2; }
-    .label { font-family: 'Josefin Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.8rem; color: var(--terracotta); }
-    a { color: var(--terracotta); }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
-    header { padding: 1.5rem 0; }
-    header nav { display: flex; justify-content: space-between; align-items: center; }
-    header .brand { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--charcoal); text-decoration: none; }
-    header nav ul { list-style: none; display: flex; gap: 1.5rem; }
-    header nav ul a { font-family: 'Josefin Sans', sans-serif; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; text-decoration: none; color: var(--charcoal); }
-    .hero { text-align: center; padding: 5rem 0; }
-    .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--charcoal); }
-    .hero h1 em { font-style: italic; color: var(--terracotta); }
-    .hero p { font-size: 1.2rem; max-width: 620px; margin: 1.5rem auto; }
-    .btn { display: inline-block; background: var(--terracotta); color: var(--cream); padding: 0.9rem 2rem; border-radius: 4px; text-decoration: none; font-family: 'Josefin Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; }
-    section { padding: 4rem 0; }
-    section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 2rem; }
-    .gallery figure { margin: 0; }
-    .gallery img { width: 100%; height: 260px; object-fit: cover; border-radius: 6px; display: block; }
-    .gallery figcaption { font-family: 'Josefin Sans', sans-serif; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em; padding-top: 0.5rem; color: var(--olive); }
-    .faq dt { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; margin-top: 1.5rem; color: var(--olive); }
-    .faq dd { margin-left: 0; }
-    .contact { background: var(--olive); color: var(--cream); }
-    .contact h2 { color: var(--cream); }
-    .contact a { color: var(--sand); }
-    footer { background: var(--charcoal); color: var(--cream); padding: 2rem 0; text-align: center; font-size: 0.85rem; }
-    footer a { color: var(--gold); margin: 0 0.5rem; }
-
-    /* WIZARD */
-    .trip-form { max-width: 520px; margin-top: 1.5rem; }
-    .step-bar { display: flex; align-items: center; gap: 0; margin-bottom: 1.75rem; }
-    .step { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 0 0 auto; }
-    .step-dot { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid rgba(212,184,150,.3); background: rgba(255,255,255,.07); color: rgba(245,240,232,.4); font-family: 'Josefin Sans', sans-serif; font-size: 12px; letter-spacing: 1px; display: flex; align-items: center; justify-content: center; transition: all .25s; }
-    .step-label { font-family: 'Josefin Sans', sans-serif; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(245,240,232,.38); transition: color .25s; white-space: nowrap; }
-    .step.on .step-dot { background: var(--terracotta); border-color: var(--terracotta); color: var(--cream); }
-    .step.on .step-label { color: rgba(245,240,232,.9); font-weight: 600; }
-    .step.done .step-dot { background: rgba(255,255,255,.1); border-color: rgba(212,184,150,.45); color: var(--sand); }
-    .step-line { flex: 1; height: 1px; background: rgba(212,184,150,.18); margin: 0 6px 20px; }
-    .panel { display: none; }
-    .panel.on { display: block; animation: fin .3s ease; }
-    @keyframes fin { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
-    .f-hint { font-size: .9rem; color: rgba(245,240,232,.58); font-style: italic; margin-bottom: 1.1rem; }
-    .f-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: .8rem; }
-    .f-lbl { font-family: 'Josefin Sans', sans-serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand); }
-    .f-in, .f-sel, .f-ta { width: 100%; padding: 12px 14px; background: rgba(255,255,255,.07); border: 1px solid rgba(212,184,150,.26); border-radius: 4px; font-family: 'Raleway', sans-serif; font-size: .875rem; color: var(--cream); outline: none; transition: border-color .18s; }
-    .f-in::placeholder, .f-ta::placeholder { color: rgba(245,240,232,.28); }
-    .f-in:focus, .f-sel:focus, .f-ta:focus { border-color: var(--terracotta); }
-    .f-sel { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23D4B896' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; cursor: pointer; }
-    .f-sel option { background: #2a3d24; color: var(--cream); }
-    .f-ta { resize: vertical; }
-    .f-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .f-nav { margin-top: 1rem; display: flex; gap: 8px; }
-    .f-nav .btn { font-size: .75rem; min-height: 44px; padding: 0 20px; border: none; cursor: pointer; }
-    .btn-ghost { background: transparent; border: 1.5px solid rgba(212,184,150,.3) !important; color: rgba(245,240,232,.65); flex: 0 0 auto; }
-    .btn-ghost:hover { border-color: rgba(212,184,150,.55) !important; color: var(--cream); }
-    .btn-adv { flex: 1; }
-    .f-note { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: rgba(245,240,232,.32); text-align: center; margin-top: 1rem; }
-    .success-panel { text-align: center; padding: 1.5rem 0 .5rem; }
-    .success-icon { font-size: 1.8rem; margin-bottom: .6rem; }
-    .success-title { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; color: var(--cream); margin-bottom: .5rem; }
-    .success-body { font-size: .9rem; color: rgba(245,240,232,.65); line-height: 1.7; }
-
-  </style>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "TravelAgency",
-    "name": "Travels by Val",
-    "founder": "Valeria Delgado",
-    "description": "Free travel advisory service led by certified InteleTravel advisor Valeria Delgado.",
-    "url": "https://travelsbyval.com",
-    "email": "valeriadelgado995@gmail.com",
-    "telephone": "+1-305-339-3588",
-    "priceRange": "Free to clients",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "St. Petersburg",
-      "addressRegion": "FL",
-      "addressCountry": "US"
-    },
-    "areaServed": ["Tampa Bay", "United States", "Worldwide"],
-    "sameAs": [
-      "https://www.tiktok.com/@val3riadelgado",
-      "https://www.youtube.com/@TravelByVal"
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How much does it cost to work with Travels by Val?",
-        "acceptedAnswer": { "@type": "Answer", "text": "It is 100% free to clients. Travel vendors pay the commission, so you get expert planning at no added cost." }
-      },
-      {
-        "@type": "Question",
-        "name": "What areas do you serve?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Based in St. Petersburg, FL, serving the Tampa Bay area and clients nationwide, with bookings worldwide." }
-      },
-      {
-        "@type": "Question",
-        "name": "Are you a certified travel advisor?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Valeria Delgado is a certified Independent Travel Advisor with InteleTravel, an ARC, IATAN, CLIA, and Ensemble accredited host agency with over 30 years of experience." }
-      }
-    ]
-  }
-  </script>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>Travels by Val | Free Travel Advisor | St. Pete, FL</title>
+<meta name="description" content="Valeria Delgado, certified InteleTravel advisor, St. Pete FL. Free personalized trip planning, hidden gems, real itineraries. No advisor fees.">
+<meta property="og:title" content="Travels by Val | Free Trip Planning | InteleTravel Certified">
+<meta property="og:url" content="https://travelsbyval.com">
+<link rel="canonical" href="https://travelsbyval.com">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "@id": "https://travelsbyval.com/#business",
+  "name": "Travels by Val",
+  "alternateName": "Valeria Delgado — Travel Advisor",
+  "description": "Certified InteleTravel independent travel advisor based in St. Petersburg, Florida. Free, personalized trip planning including flights, hotels, cruises, and excursions at no cost to the traveler.",
+  "url": "https://travelsbyval.com/",
+  "email": "valeriadelgado995@gmail.com",
+  "telephone": "+1-305-339-3588",
+  "priceRange": "Free to clients",
+  "founder": {
+    "@type": "Person",
+    "name": "Valeria Delgado",
+    "jobTitle": "Independent Travel Advisor",
+    "worksFor": { "@type": "Organization", "name": "InteleTravel" }
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "St. Petersburg",
+    "addressRegion": "FL",
+    "addressCountry": "US"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "St. Petersburg" },
+    { "@type": "City", "name": "Tampa" },
+    { "@type": "AdministrativeArea", "name": "Tampa Bay" },
+    { "@type": "Country", "name": "United States" }
+  ],
+  "knowsAbout": ["Cruise booking","Honeymoon planning","Family vacations","All-inclusive resorts","European travel","Caribbean cruises","Mediterranean cruises","Alaska cruises"],
+  "makesOffer": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Free personalized trip planning — vendor-paid commission, no fee to the traveler.",
+    "itemOffered": { "@type": "Service", "name": "Personalized Travel Planning", "serviceType": "Travel advisory and booking" }
+  },
+  "memberOf": { "@type": "Organization", "name": "InteleTravel", "description": "World’s oldest and largest host travel agency. ARC, IATAN, CLIA, and Ensemble accredited." },
+  "sameAs": ["https://www.tiktok.com/@val3riadelgado","https://www.youtube.com/@TravelByVal"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How much does it cost to use a travel advisor?","acceptedAnswer":{"@type":"Answer","text":"Nothing. Hotels, airlines, cruise lines, and resorts pay InteleTravel advisors a commission that is already built into the price you would pay booking directly. You get a dedicated expert at no extra cost."}},
+    {"@type":"Question","name":"What areas does Travels by Val serve?","acceptedAnswer":{"@type":"Answer","text":"Valeria is based in St. Petersburg, Florida and serves travelers throughout Tampa Bay and nationwide, planning trips to destinations worldwide."}},
+    {"@type":"Question","name":"Is Travels by Val a certified travel agency?","acceptedAnswer":{"@type":"Answer","text":"Yes. Valeria Delgado is a certified independent advisor with InteleTravel, the world’s oldest and largest host travel agency, which is ARC, IATAN, CLIA, and Ensemble accredited."}},
+    {"@type":"Question","name":"What kinds of trips can Val book?","acceptedAnswer":{"@type":"Answer","text":"Flights, hotels, all-inclusive resorts, honeymoons, family vacations, and cruises across all major lines including Caribbean, Mediterranean, Alaska, and river cruises."}}
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@400;500;600;700&family=Josefin+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Raleway',sans-serif;background:#0E0A04;color:#1A1008;}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+:root{
+  --c:#F5F0E8;--w:#F9F5EE;--s:#EDE8DC;--tan:#EAE0CC;
+  --t:#B85835;--g:#C9974A;--sd:#D4B896;--ol:#4E6040;
+  --ch:#1E1408;--ch2:#2A1A08;--br:#301808;--br2:#3E2410;
+  --bd:#1A1008;--mu:#4A3A24;--mi:#7A6848;
+  --ru:rgba(184,88,53,.14);
+}
+.canvas{display:flex;flex-direction:column;align-items:center;padding:36px 14px 72px;gap:28px;}
+.pg-hdr{text-align:center;}
+.pg-hdr .tag{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--t);display:block;margin-bottom:8px;}
+.pg-hdr h1{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,4vw,42px);font-weight:300;color:var(--c);line-height:1.1;}
+.pg-hdr h1 em{font-style:italic;color:var(--g);}
+.pg-hdr p{margin-top:6px;font-size:10px;font-weight:500;color:#4A3A20;}
+.layout{display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap;justify-content:center;width:100%;max-width:1100px;}
+.ph-col{flex:0 0 auto;}
+.ph-lbl{text-align:center;font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#2A1A08;margin-bottom:10px;}
+.phone{width:min(330px,92vw);height:690px;border-radius:46px;border:2.5px solid #221408;background:#000;overflow:hidden;position:relative;box-shadow:0 0 0 1px #080402,0 24px 64px rgba(0,0,0,.9);}
+.notch{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:84px;height:22px;background:#000;border-radius:12px;z-index:30;}
+.screen{width:100%;height:100%;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;background:var(--c);-webkit-overflow-scrolling:touch;}
+.screen::-webkit-scrollbar{display:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:34px 18px 13px;background:var(--c);position:sticky;top:0;z-index:20;border-bottom:1px solid var(--ru);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--ch);}
+.nav-logo em{font-style:italic;color:var(--t);}
+.nav-ham{display:flex;flex-direction:column;gap:4.5px;width:20px;cursor:pointer;}
+.nav-ham span{display:block;height:1.5px;background:var(--ch);}
+.nav-ham span:last-child{width:60%;}
+.hero{height:295px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:0 20px 46px;}
+.hero-grad{position:absolute;inset:0;background:radial-gradient(ellipse at 72% 38%, #B85835 0%, transparent 58%),radial-gradient(ellipse at 20% 20%, #5A2A0A 0%, transparent 55%),radial-gradient(ellipse at 85% 80%, #3A2810 0%, transparent 50%),linear-gradient(145deg, #1E0E04 0%, #4A2010 30%, #8A4020 55%, #2A1808 85%, #120A02 100%);}
+.hero-grain{position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,transparent,transparent 2px,rgba(255,255,255,.012) 2px,rgba(255,255,255,.012) 4px);mix-blend-mode:overlay;}
+.hero-cut{position:absolute;bottom:-1px;left:-1px;right:-1px;height:50px;background:var(--c);clip-path:polygon(0 100%,100% 100%,100% 100%,0 28%);}
+.hero-in{position:relative;z-index:2;}
+.hero-loc{font-family:'Josefin Sans',sans-serif;font-size:7px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(212,178,140,.72);margin-bottom:10px;}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:32px;font-style:italic;font-weight:300;color:#F5F0E8;line-height:1.08;margin-bottom:10px;}
+.hero-by{font-family:'Josefin Sans',sans-serif;font-size:6.5px;letter-spacing:3px;text-transform:uppercase;color:rgba(212,178,140,.55);}
+.sc{padding:22px 16px;background:var(--c);}
+.sw{padding:22px 16px;background:var(--w);}
+.ss{padding:22px 16px;background:var(--s);}
+.stan{padding:22px 16px;background:var(--tan);}
+.sdr{padding:24px 16px;background:var(--ch);}
+.sbr{padding:24px 16px;background:var(--br);}
+.sbr2{padding:22px 16px;background:var(--br2);}
+.sol{padding:16px;background:var(--ol);}
+.ey{font-family:'Josefin Sans',sans-serif;font-size:7px;letter-spacing:4px;text-transform:uppercase;color:var(--t);display:flex;align-items:center;gap:5px;margin-bottom:5px;}
+.ey-lt{color:var(--sd);}
+.ey-ol{color:#9AC862;}
+.h2{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:400;color:var(--ch);line-height:1.2;margin-bottom:9px;}
+.h2 em{font-style:italic;color:var(--t);}
+.h2-lt{color:var(--c);}
+.h2-lt em{color:var(--sd);}
+.bd{font-family:'Raleway',sans-serif;font-size:10.5px;font-weight:700;color:#1A1008;line-height:1.82;margin-bottom:14px;}
+.bdl{font-family:'Raleway',sans-serif;font-size:10.5px;font-weight:600;color:rgba(245,240,232,.92);line-height:1.82;margin-bottom:14px;}
+.hr{height:1px;background:var(--ru);margin:2px 0;}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;border-radius:3px;cursor:pointer;transition:opacity .18s,transform .12s;white-space:nowrap;min-height:42px;padding:0 22px;gap:5px;}
+.btn:hover{opacity:.86;transform:translateY(-1px);}
+.btn-p{background:var(--t);color:#FAF6EE;}
+.btn-o{border:2px solid var(--t);color:var(--t);background:transparent;}
+.btn-g{border:1.5px solid rgba(245,240,232,.42);color:#FAF6EE;background:transparent;}
+.btn-full{width:100%;}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+.fpill{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:var(--ol);color:#CCE8A8;border-radius:100px;font-family:'Josefin Sans',sans-serif;font-size:7px;letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:11px;}
+.stats{display:flex;justify-content:space-around;padding:14px 0;border-top:1px solid var(--ru);border-bottom:1px solid var(--ru);margin:13px 0;}
+.stn{font-family:'Cormorant Garamond',serif;font-size:28px;font-style:italic;color:var(--t);text-align:center;line-height:1;}
+.stl{font-family:'Josefin Sans',sans-serif;font-size:6px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mi);text-align:center;margin-top:3px;}
+.val-photo{margin-top:16px;border-radius:14px;overflow:hidden;position:relative;line-height:0;box-shadow:0 6px 22px rgba(18,10,2,.18);}
+.val-photo img{width:100%;height:auto;display:block;}
+.val-photo-ov{position:absolute;left:0;right:0;bottom:0;height:38%;background:linear-gradient(to top,rgba(24,14,4,.82) 0%,rgba(24,14,4,.35) 55%,transparent 100%);}
+.val-photo-cap{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;line-height:1.2;}
+.val-photo-name{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:#F5F0E8;margin-bottom:3px;}
+.val-photo-sub{font-family:'Josefin Sans',sans-serif;font-size:6.5px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(212,178,140,.9);}
+.it-strip{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px;}
+.it-badge{padding:3px 9px;background:rgba(188,148,108,.12);border:1px solid rgba(188,148,108,.24);border-radius:100px;font-family:'Josefin Sans',sans-serif;font-size:6px;letter-spacing:1.5px;text-transform:uppercase;color:var(--sd);font-weight:500;}
+.it-note{font-family:'Raleway',sans-serif;font-size:8.5px;font-weight:600;color:var(--mu);line-height:1.75;margin-top:8px;}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.svc{background:var(--w);border:1px solid var(--ru);border-radius:10px;padding:13px 10px;text-align:center;}
+.svc-ico{font-size:20px;margin-bottom:7px;}
+.svc-h{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--ch);margin-bottom:4px;}
+.svc-b{font-family:'Raleway',sans-serif;font-size:8.5px;font-weight:600;color:var(--mu);line-height:1.6;}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.gph{border-radius:12px;overflow:hidden;aspect-ratio:3/4;background:linear-gradient(160deg,#EDE3D2,#E2D5C0);border:1px solid var(--ru);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:transform .2s,box-shadow .2s;}
+.gph:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(184,88,53,.15);}
+.gph.filled{background:#000;}
+.gph.filled img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.gph.filled .gph-flag,.gph.filled .gph-add{display:none;}
+.gph-flag{font-size:24px;opacity:.55;}
+.gph-lbl{position:absolute;bottom:0;left:0;right:0;padding:8px;font-family:'Josefin Sans',sans-serif;font-size:6.5px;letter-spacing:2px;text-transform:uppercase;color:var(--ch);text-align:center;background:linear-gradient(to top,rgba(237,227,210,.95),transparent);z-index:2;}
+.gph.filled .gph-lbl{color:#fff;background:linear-gradient(to top,rgba(18,10,2,.85),transparent);}
+.gph-add{width:30px;height:30px;border-radius:50%;border:1.5px dashed rgba(184,88,53,.45);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--t);opacity:.7;}
+.gallery-note{font-family:'Josefin Sans',sans-serif;font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--t);text-align:center;padding:10px;background:rgba(184,88,53,.06);border:1px solid rgba(184,88,53,.14);border-radius:8px;margin-bottom:14px;}
+.dest-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.dc{border-radius:11px;overflow:hidden;box-shadow:0 2px 10px rgba(18,10,2,.12);transition:transform .2s;}
+.dc:hover{transform:translateY(-2px);}
+.dc-img{height:82px;position:relative;}
+.di-it{background:linear-gradient(140deg,#8A5A18,#C47848);}
+.di-gr{background:linear-gradient(140deg,#1A4A5A,#2A7A8A);}
+.di-mx{background:linear-gradient(140deg,#8A3A16,#C26040);}
+.di-cr{background:linear-gradient(140deg,#2A5018,#4A8030);}
+.di-fr{background:linear-gradient(140deg,#2A3A54,#3A5278);}
+.di-cb{background:linear-gradient(140deg,#0A3A4A,#1A6A7A);}
+.di-ba{background:linear-gradient(140deg,#0A2A4A,#1A4A6A);}
+.di-rv{background:linear-gradient(140deg,#3A2A18,#7A5A30);}
+.di-me{background:linear-gradient(140deg,#1A2A4A,#2A4A7A);}
+.dc-img::after{content:attr(data-e);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:24px;opacity:.5;}
+.dc-fade{position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(to top,rgba(18,10,2,.8),transparent);}
+.dc-pr{position:absolute;bottom:6px;right:8px;font-family:'Josefin Sans',sans-serif;font-size:6px;letter-spacing:1px;color:rgba(245,240,232,.96);font-weight:700;}
+.dc-info{padding:8px 10px;background:var(--w);}
+.dc-nm{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--ch);}
+.dc-sub{font-family:'Josefin Sans',sans-serif;font-size:6px;letter-spacing:1px;text-transform:uppercase;color:var(--t);margin-top:2px;}
+.step{display:flex;gap:10px;align-items:flex-start;margin-bottom:13px;}
+.step-n{font-family:'Cormorant Garamond',serif;font-size:26px;font-style:italic;color:var(--t);line-height:1;width:24px;flex-shrink:0;}
+.step-h{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--ch);margin-bottom:3px;}
+.step-b{font-family:'Raleway',sans-serif;font-size:9px;font-weight:600;color:var(--mu);line-height:1.75;}
+.form-col{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.fld{padding:11px 12px;background:rgba(255,255,255,.05);border:1px solid rgba(188,148,108,.2);border-radius:3px;font-family:'Josefin Sans',sans-serif;font-size:7px;letter-spacing:1px;color:rgba(245,240,232,.38);}
+.fld-2{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.diary{background:var(--w);border-radius:10px;border:1px solid var(--ru);padding:12px;margin-bottom:8px;display:flex;gap:9px;align-items:flex-start;transition:box-shadow .2s;}
+.diary:hover{box-shadow:0 4px 14px rgba(184,88,53,.1);}
+.diary-n{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:rgba(184,88,53,.2);line-height:1;flex-shrink:0;width:22px;}
+.diary-tag{font-family:'Josefin Sans',sans-serif;font-size:6px;letter-spacing:2px;text-transform:uppercase;color:var(--ol);margin-bottom:3px;}
+.diary-h{font-family:'Cormorant Garamond',serif;font-size:13.5px;font-style:italic;color:var(--ch);line-height:1.28;margin-bottom:3px;}
+.diary-m{font-family:'Josefin Sans',sans-serif;font-size:6px;letter-spacing:1px;color:var(--mi);text-transform:uppercase;margin-bottom:7px;}
+.diary-r{font-family:'Josefin Sans',sans-serif;font-size:6.5px;letter-spacing:2px;text-transform:uppercase;color:var(--t);font-weight:700;}
+.testi{background:var(--w);border-radius:10px;border:1px solid var(--ru);padding:12px;margin-bottom:8px;position:relative;}
+.testi::before{content:'\201C';font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--t);opacity:.16;position:absolute;top:4px;left:11px;line-height:1;}
+.testi-tx{font-family:'Raleway',sans-serif;font-size:9.5px;font-weight:600;color:#1A1008;line-height:1.78;padding-top:8px;margin-bottom:9px;}
+.testi-row{display:flex;align-items:center;gap:7px;}
+.av{width:28px;height:28px;border-radius:50%;flex-shrink:0;font-size:13px;display:flex;align-items:center;justify-content:center;}
+.av1{background:linear-gradient(135deg,#EAC5B0,#C4714A);}
+.av2{background:linear-gradient(135deg,#D4B896,#8B5A14);}
+.av3{background:linear-gradient(135deg,#B8D4C0,#4E6040);}
+.testi-nm{font-family:'Josefin Sans',sans-serif;font-size:7px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ch);font-weight:600;}
+.testi-trip{font-family:'Josefin Sans',sans-serif;font-size:6px;letter-spacing:1px;color:var(--mi);text-transform:uppercase;}
+.stars{font-size:9px;color:var(--t);letter-spacing:1px;margin-bottom:4px;}
+.tsrc{display:inline-flex;padding:2px 7px;border-radius:100px;font-family:'Josefin Sans',sans-serif;font-size:5.5px;letter-spacing:1px;text-transform:uppercase;margin-left:5px;background:rgba(184,88,53,.08);color:var(--t);border:1px solid rgba(184,88,53,.16);}
+.honest-note{background:rgba(184,88,53,.06);border:1px solid rgba(184,88,53,.14);border-radius:8px;padding:10px 12px;margin-bottom:13px;font-family:'Raleway',sans-serif;font-size:9px;font-weight:600;color:var(--mu);line-height:1.7;}
+.honest-note strong{color:var(--t);font-weight:700;}
+.aff{background:var(--w);border-radius:10px;border:1px solid var(--ru);padding:10px;margin-bottom:7px;display:flex;align-items:center;gap:9px;}
+.aff-ico{width:34px;height:34px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:17px;}
+.ai-l{background:#FDE8D8;}.ai-i{background:#E8F0DC;}.ai-s{background:#F0E8D8;}.ai-c{background:#EAD8F2;}
+.aff-r{flex:1;min-width:0;}
+.aff-br{font-family:'Josefin Sans',sans-serif;font-size:6.5px;letter-spacing:2px;text-transform:uppercase;color:var(--mi);}
+.aff-nm{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--ch);margin:2px 0;}
+.aff-dc{font-family:'Raleway',sans-serif;font-size:8.5px;font-weight:600;color:var(--mu);line-height:1.5;}
+.aff-lk{font-family:'Josefin Sans',sans-serif;font-size:6.5px;letter-spacing:2px;text-transform:uppercase;color:var(--t);white-space:nowrap;font-weight:700;flex-shrink:0;}
+.email-row{display:flex;gap:5px;}
+.email-in{flex:1;padding:11px;background:rgba(255,255,255,.06);border:1px solid rgba(188,148,108,.22);border-radius:3px;font-family:'Josefin Sans',sans-serif;font-size:7px;letter-spacing:1px;color:rgba(245,240,232,.38);}
+.email-sub{padding:11px 14px;background:var(--t);font-family:'Josefin Sans',sans-serif;font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:#FAF6EE;border-radius:3px;cursor:pointer;white-space:nowrap;font-weight:600;}
+.trust{display:flex;justify-content:space-around;}
+.ti{text-align:center;}
+.ti-icon{font-size:15px;margin-bottom:4px;}
+.ti-lbl{font-family:'Josefin Sans',sans-serif;font-size:6px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,240,232,.72);font-weight:600;}
+.ft-intel{padding:28px 18px;background:linear-gradient(180deg,#241307 0%,#1A0E04 100%);border-top:1px solid rgba(201,151,74,.16);text-align:center;}
+.ft-intel-eyebrow{font-family:'Josefin Sans',sans-serif;font-size:6px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(201,151,74,.7);margin-bottom:5px;}
+.ft-intel-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:var(--c);margin-bottom:6px;letter-spacing:.5px;}
+.ft-intel-rule{width:34px;height:1px;background:linear-gradient(to right,transparent,rgba(201,151,74,.55),transparent);margin:0 auto 16px;}
+.ft-accreds{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:16px;max-width:300px;margin-left:auto;margin-right:auto;}
+.ft-ab{padding:4px 12px;background:rgba(201,151,74,.07);border:1px solid rgba(201,151,74,.24);border-radius:100px;font-family:'Josefin Sans',sans-serif;font-size:6px;letter-spacing:1.5px;text-transform:uppercase;color:var(--sd);}
+.ft-body{font-family:'Raleway',sans-serif;font-size:8.5px;font-weight:500;color:rgba(245,240,232,.42);line-height:1.8;max-width:270px;margin:0 auto;}
+.ft{background:radial-gradient(ellipse at 50% 0%,#1A0E04 0%,#080402 70%);padding:28px 18px 22px;text-align:center;position:relative;}
+.ft-mono{width:42px;height:42px;margin:0 auto 12px;border-radius:50%;border:1px solid rgba(201,151,74,.35);display:flex;align-items:center;justify-content:center;background:rgba(201,151,74,.06);}
+.ft-mono span{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--g);line-height:1;}
+.ft-logo{font-family:'Cormorant Garamond',serif;font-size:25px;font-style:italic;font-weight:300;color:var(--c);margin-bottom:6px;letter-spacing:.5px;}
+.ft-tagline{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:rgba(212,178,140,.7);margin-bottom:8px;}
+.ft-sub{font-family:'Josefin Sans',sans-serif;font-size:6px;letter-spacing:3px;text-transform:uppercase;color:var(--t);margin-bottom:18px;font-weight:500;}
+.ft-rule{width:40px;height:1px;background:linear-gradient(to right,transparent,rgba(201,151,74,.5),transparent);margin:0 auto 18px;}
+.ft-links{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 16px;margin-bottom:18px;}
+.ft-link{font-family:'Josefin Sans',sans-serif;font-size:6.5px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(245,240,232,.42);transition:color .18s;cursor:pointer;}
+.ft-link:hover{color:var(--g);}
+.ft-divider{width:100%;height:1px;background:rgba(245,240,232,.06);margin-bottom:16px;}
+.ft-contact{display:flex;flex-direction:column;gap:6px;align-items:center;margin-bottom:16px;}
+.ft-contact a{font-family:'Josefin Sans',sans-serif;font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--sd);transition:color .18s;}
+.ft-contact a:hover{color:var(--g);}
+.ft-area{font-family:'Raleway',sans-serif;font-size:7.5px;font-weight:500;color:rgba(245,240,232,.32);line-height:1.7;max-width:250px;text-align:center;}
+.ft-fine{font-family:'Josefin Sans',sans-serif;font-size:6px;font-weight:400;letter-spacing:.5px;color:rgba(245,240,232,.26);line-height:1.9;text-transform:uppercase;}
+.ft-fine strong{color:rgba(245,240,232,.4);font-weight:500;}
+.sidebar{width:292px;display:flex;flex-direction:column;gap:14px;}
+.panel{background:#120A04;border:1px solid #1E1206;border-radius:14px;padding:18px;}
+.panel-title{font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:#2E1A08;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #1E1206;}
+.panel-title span{color:var(--t);}
+.pbd{font-family:'Raleway',sans-serif;font-size:9px;font-weight:600;color:rgba(245,240,232,.58);line-height:1.72;}
+.pbd strong{color:rgba(245,240,232,.9);font-weight:700;}
+.pl{height:1px;background:#1E1206;margin:9px 0;}
+.edge{display:flex;gap:7px;align-items:flex-start;margin-bottom:9px;}
+.edot{width:16px;height:16px;background:var(--t);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--c);flex-shrink:0;margin-top:1px;}
+.etxt{font-family:'Raleway',sans-serif;font-size:8px;font-weight:600;color:rgba(245,240,232,.62);line-height:1.6;}
+.etxt strong{color:rgba(245,240,232,.9);font-weight:700;}
+.seo-r{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;}
+.seo-k{font-family:'Josefin Sans',sans-serif;font-size:6.5px;letter-spacing:1.5px;text-transform:uppercase;color:#4A3418;}
+.seo-bw{flex:1;height:3.5px;background:#1E1206;border-radius:100px;margin:0 9px;}
+.seo-b{height:100%;border-radius:100px;background:var(--t);}
+.seo-s{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--sd);width:26px;text-align:right;}
+.am{display:flex;align-items:center;gap:7px;margin-bottom:9px;}
+.am-i{font-size:14px;width:24px;text-align:center;flex-shrink:0;}
+.am-nm{font-family:'Josefin Sans',sans-serif;font-size:6.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--sd);font-weight:500;}
+.am-rv{font-family:'Raleway',sans-serif;font-size:7.5px;font-weight:600;color:#4A3418;}
+@keyframes rise{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.ph-col{animation:rise .5s ease both;}
+.sidebar{animation:rise .5s .1s ease both;}
+</style>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <a href="/" class="brand">Travels by Val</a>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#destinations">Destinations</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+<div class="canvas">
+<div class="pg-hdr">
+  <span class="tag">&#10022; travelsbyval.com &mdash; Final Approval</span>
+  <h1>Travels <em>by Val</em></h1>
+  <p>Valeria Delgado &nbsp;&middot;&nbsp; @val3riadelgado &nbsp;&middot;&nbsp; @TravelByVal &nbsp;&middot;&nbsp; St. Pete, FL &nbsp;&middot;&nbsp; InteleTravel Certified</p>
+</div>
+<div class="layout">
+<div class="ph-col">
+<div class="ph-lbl">travelsbyval.com &mdash; Full Site Preview</div>
+<div class="phone">
+<div class="notch"></div>
+<div class="screen">
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-logo">Travels <em>by Val</em></div>
+  <div class="nav-ham"><span></span><span></span><span></span></div>
+</div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grad"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-cut"></div>
+  <div class="hero-in">
+    <div class="hero-loc">InteleTravel &nbsp;&middot;&nbsp; St. Pete, Florida</div>
+    <div class="hero-h1">Hidden Gems.<br>Real Itineraries.<br>All Things Travel.</div>
+    <div class="hero-by" style="margin-bottom:14px;">By Valeria &nbsp;&middot;&nbsp; Travel Advisor</div>
+    <div class="btn btn-p" style="background:#F5F0E8;color:#3A1808;">Plan My Free Trip &rarr;</div>
+  </div>
+</div>
+<!-- ABOUT -->
+<div class="sc">
+  <div class="h2">I Plan Your Dream Trip.<br><em>You Pay Nothing.</em></div>
+  <div class="fpill">&#10003; My Service is 100% Free to You</div>
+  <div class="bd">I am Valeria Delgado &mdash; a certified InteleTravel advisor in St. Pete, Florida. I document hidden gems and real itineraries, then book those exact trips for you &mdash; flights, hotels, excursions, every detail &mdash; at no charge. Vendors pay my commission. You pay nothing extra.</div>
+  <div class="btn-row">
+    <div class="btn btn-p">Book My Free Trip &rarr;</div>
+    <div class="btn btn-o">Watch My Videos</div>
+  </div>
+  <div class="stats">
+    <div><div class="stn">$0</div><div class="stl">Advisor Fee</div></div>
+    <div><div class="stn">24h</div><div class="stl">Response Time</div></div>
+    <div><div class="stn">$800+</div><div class="stl">Avg. Client Savings</div></div>
+  </div>
+  <div class="val-photo">
+    <img src="/photos/val.jpg" alt="Valeria Delgado, Travel Advisor, on a bridge in Europe">
+    <div class="val-photo-ov"></div>
+    <div class="val-photo-cap">
+      <div class="val-photo-name">Valeria Delgado</div>
+      <div class="val-photo-sub">InteleTravel Certified &nbsp;&middot;&nbsp; St. Pete, FL</div>
     </div>
-  </header>
-  <main>
-    <section class="hero">
-      <div class="container">
-        <p class="label">Certified InteleTravel Advisor &middot; St. Petersburg, FL</p>
-        <h1>Travel planning, <em>on the house</em>.</h1>
-        <p>Personalized trips designed around you by Valeria Delgado &mdash; completely free, because travel vendors pay the commission, not you.</p>
-        <a href="#contact" class="btn">Plan My Trip</a>
-      </div>
-    </section>
-    <section id="about">
-      <div class="container">
-        <p class="label">About</p>
-        <h2>Meet Valeria</h2>
-        <p>Valeria Delgado is a certified Independent Travel Advisor with InteleTravel, helping travelers across Tampa Bay and the nation plan trips they will never forget. From sun-soaked coastlines to mountain escapes, every itinerary is built around your style, your pace, and your budget &mdash; at no cost to you.</p>
-        <p style="margin-top:1rem;">Travels by Val is backed by InteleTravel, an ARC, IATAN, CLIA, and Ensemble accredited host agency with more than 30 years in the industry.</p>
-      </div>
-    </section>
-    <section id="destinations" style="background:#fff;">
-      <div class="container">
-        <p class="label">Destinations</p>
-        <h2>Recent journeys</h2>
-        <div class="gallery">
-          <figure><img src="photos/spain.jpg" alt="Coastal view of Alicante, Spain" loading="lazy"><figcaption>Alicante, Spain</figcaption></figure>
-          <figure><img src="photos/italy.jpg" alt="Cliffside village of Positano on the Amalfi Coast, Italy" loading="lazy"><figcaption>Positano, Italy</figcaption></figure>
-          <figure><img src="photos/tahoe.jpg" alt="Clear blue waters of Lake Tahoe" loading="lazy"><figcaption>Lake Tahoe</figcaption></figure>
-          <figure><img src="photos/chicago.jpg" alt="Chicago city skyline" loading="lazy"><figcaption>Chicago</figcaption></figure>
-        </div>
-      </div>
-    </section>
-    <section id="journal">
-      <div class="container">
-        <p class="label">Journal</p>
-        <h2>From the blog</h2>
-        <p style="margin-top:0.5rem;"><a href="journal/how-i-saved-800-on-a-caribbean-cruise.html">How I Saved $800 on a Caribbean Cruise &rarr;</a></p>
-      </div>
-    </section>
-    <section id="faq" style="background:#fff;">
-      <div class="container">
-        <p class="label">FAQ</p>
-        <h2>Good to know</h2>
-        <dl class="faq">
-          <dt>How much does it cost to work with Travels by Val?</dt>
-          <dd>It is 100% free to clients. Travel vendors pay the commission, so you get expert planning at no added cost.</dd>
-          <dt>What areas do you serve?</dt>
-          <dd>Based in St. Petersburg, FL, serving the Tampa Bay area and clients nationwide, with bookings worldwide.</dd>
-          <dt>Are you a certified travel advisor?</dt>
-          <dd>Yes. Valeria is a certified Independent Travel Advisor with InteleTravel, an ARC, IATAN, CLIA, and Ensemble accredited host agency with over 30 years of experience.</dd>
-        </dl>
-      </div>
-    </section>
-    <section id="book" class="contact">
-      <div class="container">
-        <p class="label">✦ Free Trip Planning</p>
-        <h2>Ready to Go? <em>Let's Make It Happen.</em></h2>
-        <p>Fill this out and I will reply within 24 hours with real options, honest pricing, and a plan built around your life. No pressure. No fees. Ever.</p>
-
-        <div class="trip-form" id="tf">
-          <div class="step-bar">
-            <div class="step on" data-s="1"><div class="step-dot">1</div><span class="step-label">Your Info</span></div>
-            <div class="step-line"></div>
-            <div class="step" data-s="2"><div class="step-dot">2</div><span class="step-label">Your Trip</span></div>
-            <div class="step-line"></div>
-            <div class="step" data-s="3"><div class="step-dot">3</div><span class="step-label">Details</span></div>
-          </div>
-
-          <form id="trf" action="https://formspree.io/f/xqeowoee" method="POST" novalidate>
-            <input type="hidden" name="_subject" value="New Trip Request – Travels by Val">
-
-            <div class="panel on" data-p="1">
-              <p class="f-hint">How should I reach you?</p>
-              <div class="f-group">
-                <label class="f-lbl" for="fn">Your name</label>
-                <input class="f-in" id="fn" type="text" name="name" placeholder="Jane Smith…" autocomplete="name" required>
-              </div>
-              <div class="f-group">
-                <label class="f-lbl" for="fe">Email address</label>
-                <input class="f-in" id="fe" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
-              </div>
-              <div class="f-nav">
-                <button type="button" class="btn btn-p btn-adv" data-from="1">Next: Your Trip →</button>
-              </div>
-            </div>
-
-            <div class="panel" data-p="2">
-              <p class="f-hint">Where are you dreaming of going?</p>
-              <div class="f-group">
-                <label class="f-lbl" for="fd">Destination</label>
-                <input class="f-in" id="fd" type="text" name="destination" placeholder="Italy, Caribbean cruise, Bali…" required>
-              </div>
-              <div class="f-group">
-                <label class="f-lbl" for="ftype">Trip type</label>
-                <select class="f-sel" id="ftype" name="trip_type">
-                  <option value="" disabled selected>What kind of trip?</option>
-                  <option>All-Inclusive Resort</option>
-                  <option>Cruise</option>
-                  <option>International Adventure</option>
-                  <option>Family Vacation</option>
-                  <option>Honeymoon / Romance</option>
-                  <option>Group Trip</option>
-                  <option>Solo Travel</option>
-                  <option>Not sure yet</option>
-                </select>
-              </div>
-              <div class="f-2col">
-                <div class="f-group">
-                  <label class="f-lbl" for="fdt">Travel dates</label>
-                  <input class="f-in" id="fdt" type="text" name="dates" placeholder="June 2026, flexible…">
-                </div>
-                <div class="f-group">
-                  <label class="f-lbl" for="fps">Party size</label>
-                  <select class="f-sel" id="fps" name="party_size">
-                    <option value="" disabled selected>How many?</option>
-                    <option>Solo (1)</option>
-                    <option>Couple (2)</option>
-                    <option>Small group (3–4)</option>
-                    <option>Group (5–8)</option>
-                    <option>Large group (9+)</option>
-                  </select>
-                </div>
-              </div>
-              <div class="f-nav">
-                <button type="button" class="btn btn-ghost" data-to="1">← Back</button>
-                <button type="button" class="btn btn-p btn-adv" data-from="2">Next: Details →</button>
-              </div>
-            </div>
-
-            <div class="panel" data-p="3">
-              <p class="f-hint">Almost there — a little more context helps.</p>
-              <div class="f-group">
-                <label class="f-lbl" for="fbgt">Budget per person</label>
-                <select class="f-sel" id="fbgt" name="budget">
-                  <option value="" disabled selected>Approximate range…</option>
-                  <option>Under $1,000</option>
-                  <option>$1,000 – $2,500</option>
-                  <option>$2,500 – $5,000</option>
-                  <option>$5,000 – $10,000</option>
-                  <option>$10,000+</option>
-                  <option>Flexible / Not sure</option>
-                </select>
-              </div>
-              <div class="f-group">
-                <label class="f-lbl" for="fdet">What makes this trip special?</label>
-                <textarea class="f-ta" id="fdet" name="details" rows="3" placeholder="Anniversary, traveling with kids, bucket-list moment, must-have activities…"></textarea>
-              </div>
-              <div class="f-nav">
-                <button type="button" class="btn btn-ghost" data-to="2">← Back</button>
-                <button type="submit" class="btn btn-p btn-adv">✦ Send My Free Trip Request →</button>
-              </div>
-            </div>
-
-            <div class="panel success-panel" data-p="done">
-              <div class="success-icon">✓</div>
-              <h3 class="success-title">Request received!</h3>
-              <p class="success-body">I'll reply within 24 hours with real options and honest pricing.</p>
-            </div>
-          </form>
-          <p class="f-note">InteleTravel certified · Free · 24-hr reply · Zero spam</p>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 Travels by Val &middot; Valeria Delgado, Independent Travel Advisor</p>
-      <p style="margin-top:0.5rem;">
-        <a href="https://www.tiktok.com/@val3riadelgado">TikTok</a>
-        <a href="https://www.youtube.com/@TravelByVal">YouTube</a>
-      </p>
+  </div>
+  <div class="btn btn-p btn-full" style="margin-top:14px;">Book a Call &rarr;</div>
+</div>
+<!-- FREE SERVICE -->
+<div class="stan">
+  <div class="ey">Why It Costs You Nothing</div>
+  <div class="h2">Everything I Handle &mdash;<br><em>At Zero Cost</em></div>
+  <div class="bd">Hotels, airlines, cruise lines, and resorts pay InteleTravel advisors a commission built into the price you would pay booking directly. You get a dedicated expert at no extra cost.</div>
+  <div class="svc-grid">
+    <div class="svc"><div class="svc-ico">&#x1F5FA;</div><div class="svc-h">Custom Itinerary</div><div class="svc-b">Personalized to your style, budget, and group.</div></div>
+    <div class="svc"><div class="svc-ico">&#x2708;</div><div class="svc-h">Flights Booked</div><div class="svc-b">Best routes and pricing. I compare everything.</div></div>
+    <div class="svc"><div class="svc-ico">&#x1F6F3;</div><div class="svc-h">Cruises Booked</div><div class="svc-b">All major cruise lines. Cabin upgrades and perks.</div></div>
+    <div class="svc"><div class="svc-ico">&#x1F3E8;</div><div class="svc-h">Hotels Secured</div><div class="svc-b">Exclusive rates and upgrades not online.</div></div>
+  </div>
+  <div class="btn btn-p btn-full">Start Exploring &rarr;</div>
+</div>
+<!-- DESTINATIONS -->
+<div class="sc">
+  <div class="ey">Destinations</div>
+  <div class="h2">Places I Know <em>Personally</em></div>
+  <div class="bd">Not researched. Been there. I book these through InteleTravel every week.</div>
+  <div class="dest-grid">
+    <div class="dc"><div class="dc-img di-it" data-e="&#x1F1EE;&#x1F1F9;"><div class="dc-fade"></div><div class="dc-pr">from $2,800</div></div><div class="dc-info"><div class="dc-nm">Italy</div><div class="dc-sub">Sicily &middot; Amalfi &middot; Rome</div></div></div>
+    <div class="dc"><div class="dc-img di-gr" data-e="&#x1F1EC;&#x1F1F7;"><div class="dc-fade"></div><div class="dc-pr">from $3,200</div></div><div class="dc-info"><div class="dc-nm">Greece</div><div class="dc-sub">Santorini &middot; Athens &middot; Mykonos</div></div></div>
+    <div class="dc"><div class="dc-img di-mx" data-e="&#x1F1F2;&#x1F1FD;"><div class="dc-fade"></div><div class="dc-pr">from $1,400</div></div><div class="dc-info"><div class="dc-nm">Mexico</div><div class="dc-sub">Tulum &middot; Puerto Mita &middot; Cabo</div></div></div>
+    <div class="dc"><div class="dc-img di-fr" data-e="&#x1F5FC;"><div class="dc-fade"></div><div class="dc-pr">from $4,100</div></div><div class="dc-info"><div class="dc-nm">France</div><div class="dc-sub">Paris &middot; C&ocirc;te d&rsquo;Azur</div></div></div>
+    <div class="dc"><div class="dc-img di-cr" data-e="&#x1F33F;"><div class="dc-fade"></div><div class="dc-pr">from $1,900</div></div><div class="dc-info"><div class="dc-nm">Costa Rica</div><div class="dc-sub">Eco &middot; Adventure &middot; Wellness</div></div></div>
+    <div class="dc"><div class="dc-img di-ba" data-e="&#x1F30A;"><div class="dc-fade"></div><div class="dc-pr">from $3,800</div></div><div class="dc-info"><div class="dc-nm">Bali</div><div class="dc-sub">Indonesia &middot; Culture &middot; Spa</div></div></div>
+  </div>
+</div>
+<!-- PHOTO GALLERY -->
+<div class="sw">
+  <div class="ey">Val in the Wild</div>
+  <div class="h2">Every Trip <em>Tells a Story</em></div>
+  <div class="bd">These are the places that shaped how I travel &mdash; and how I plan for you. Real moments from real trips. The same care I put into my own adventures is exactly what I bring to yours.</div>
+  <div class="gallery-note">&#10022; Real photos from real trips</div>
+  <div class="gallery">
+    <div class="gph" data-src="/photos/spain.jpg" data-flag="&#x1F1EA;&#x1F1F8;" data-label="Spain" onclick="pick(0)"><input type="file" id="up0" accept="image/*" style="display:none" onchange="loadPhoto(this,0)"><div class="gph-flag">&#x1F1EA;&#x1F1F8;</div><div class="gph-add">+</div><div class="gph-lbl">Spain</div></div>
+    <div class="gph" data-src="/photos/italy.jpg" data-flag="&#x1F1EE;&#x1F1F9;" data-label="Italy" onclick="pick(1)"><input type="file" id="up1" accept="image/*" style="display:none" onchange="loadPhoto(this,1)"><div class="gph-flag">&#x1F1EE;&#x1F1F9;</div><div class="gph-add">+</div><div class="gph-lbl">Italy</div></div>
+    <div class="gph" data-src="/photos/tahoe.jpg" data-flag="&#x1F3D4;" data-label="Lake Tahoe" onclick="pick(2)"><input type="file" id="up2" accept="image/*" style="display:none" onchange="loadPhoto(this,2)"><div class="gph-flag">&#x1F3D4;</div><div class="gph-add">+</div><div class="gph-lbl">Lake Tahoe</div></div>
+    <div class="gph" data-src="/photos/chicago.jpg" data-flag="&#x1F306;" data-label="Chicago" onclick="pick(3)"><input type="file" id="up3" accept="image/*" style="display:none" onchange="loadPhoto(this,3)"><div class="gph-flag">&#x1F306;</div><div class="gph-add">+</div><div class="gph-lbl">Chicago</div></div>
+  </div>
+  <div class="btn btn-o btn-full">View the Full Journal &rarr;</div>
+</div>
+<script>
+function pick(idx){ document.getElementById('up'+idx).click(); }
+function fillTile(tile, src){
+  var existing = tile.querySelector('img');
+  if(existing) existing.remove();
+  var img = document.createElement('img');
+  img.src = src;
+  tile.insertBefore(img, tile.firstChild);
+  tile.classList.add('filled');
+}
+function loadPhoto(input, idx){
+  if(!input.files || !input.files[0]) return;
+  var reader = new FileReader();
+  reader.onload = function(e){ fillTile(input.parentElement, e.target.result); };
+  reader.readAsDataURL(input.files[0]);
+}
+window.addEventListener('DOMContentLoaded', function(){
+  var tiles = document.querySelectorAll('.gph');
+  tiles.forEach(function(tile){
+    var src = tile.getAttribute('data-src');
+    if(!src) return;
+    var test = new Image();
+    test.onload = function(){ fillTile(tile, src); };
+    test.onerror = function(){};
+    test.src = src;
+  });
+});
+</script>
+<!-- CRUISES -->
+<div class="ss">
+  <div class="ey">Cruises</div>
+  <div class="h2">All the Major Lines &mdash;<br><em>Exclusive Perks Included</em></div>
+  <div class="bd">InteleTravel gives me access to every major cruise line with cabin upgrades, onboard credits, and group rates you cannot find online.</div>
+  <div class="dest-grid">
+    <div class="dc"><div class="dc-img di-cb" data-e="&#x1F6F3;"><div class="dc-fade"></div><div class="dc-pr">from $899</div></div><div class="dc-info"><div class="dc-nm">Caribbean</div><div class="dc-sub">Royal &middot; Carnival &middot; NCL</div></div></div>
+    <div class="dc"><div class="dc-img di-me" data-e="&#x2693;"><div class="dc-fade"></div><div class="dc-pr">from $1,800</div></div><div class="dc-info"><div class="dc-nm">Mediterranean</div><div class="dc-sub">MSC &middot; Celebrity &middot; Costa</div></div></div>
+    <div class="dc"><div class="dc-img di-ba" data-e="&#x1F30A;"><div class="dc-fade"></div><div class="dc-pr">from $2,200</div></div><div class="dc-info"><div class="dc-nm">Alaska</div><div class="dc-sub">Princess &middot; Holland America</div></div></div>
+    <div class="dc"><div class="dc-img di-rv" data-e="&#x1F6F6;"><div class="dc-fade"></div><div class="dc-pr">from $3,400</div></div><div class="dc-info"><div class="dc-nm">River Cruises</div><div class="dc-sub">Viking &middot; AmaWaterways</div></div></div>
+    <div class="dc"><div class="dc-img di-me" data-e="&#x1F334;"><div class="dc-fade"></div><div class="dc-pr">from $1,600</div></div><div class="dc-info"><div class="dc-nm">Bahamas</div><div class="dc-sub">Perfect Day &middot; Ocean Cay</div></div></div>
+    <div class="dc"><div class="dc-img di-it" data-e="&#x1F30D;"><div class="dc-fade"></div><div class="dc-pr">from $4,800</div></div><div class="dc-info"><div class="dc-nm">World Cruise</div><div class="dc-sub">100+ days &middot; All Inclusions</div></div></div>
+  </div>
+  <div class="btn btn-p btn-full">Book My Free Cruise Consultation &rarr;</div>
+</div>
+<div class="hr"></div>
+<!-- PROCESS -->
+<div class="stan">
+  <div class="ey">The Process</div>
+  <div class="h2"><em>Simple.</em> Free. Personal.</div>
+  <div class="bd">InteleTravel advisors earn commissions from vendors &mdash; not from you. Full-service expertise at the same price as booking online yourself.</div>
+  <div class="step"><div class="step-n">1</div><div><div class="step-h">Tell Me Your Dream Trip</div><div class="step-b">Destination, budget, dates, who is coming. A quick form. Zero commitment.</div></div></div>
+  <div class="step"><div class="step-n">2</div><div><div class="step-h">I Build Your Custom Plan</div><div class="step-b">InteleTravel network, exclusive rates, firsthand knowledge &mdash; built just for you.</div></div></div>
+  <div class="step"><div class="step-n">3</div><div><div class="step-h">You Show Up and Enjoy</div><div class="step-b">I handle flights, hotels, cruises, excursions. You travel. I stay available the entire trip.</div></div></div>
+  <div class="fpill" style="margin-top:6px;">&#10003; Completely free &mdash; always</div>
+  <div class="btn btn-p btn-full" style="margin-top:12px;">Start Planning My Free Trip &rarr;</div>
+</div>
+<!-- FORM -->
+<div class="sbr">
+  <div class="ey ey-lt">&#10022; Free Trip Planning</div>
+  <div class="h2 h2-lt">Ready to Go?<br><em>Let&rsquo;s Make It Happen.</em></div>
+  <div class="bdl">Fill this out and I will reply within 24 hours with real options, honest pricing, and a plan built around your life. No pressure. No fees. Ever.</div>
+  <div class="form-col">
+    <div class="fld">Your full name&hellip;</div>
+    <div class="fld">Dream destination, cruise, or region&hellip;</div>
+    <div class="fld-2"><div class="fld">Travel dates&hellip;</div><div class="fld">Party size&hellip;</div></div>
+    <div class="fld">Budget range per person&hellip;</div>
+    <div class="fld">What makes this trip special?</div>
+  </div>
+  <div class="btn btn-p btn-full">&#10022; Send My Free Trip Request &rarr;</div>
+  <div class="bdl" style="font-size:8px;margin-top:10px;margin-bottom:0;text-align:center;opacity:.55;">InteleTravel certified &middot; Free &middot; 24-hour reply &middot; Zero spam</div>
+</div>
+<!-- DIARY -->
+<div class="sc">
+  <div class="ey">Trip Journal</div>
+  <div class="h2"><em>Real Stories.</em> Real Places.</div>
+  <div class="bd">No sponsored content. Honest accounts of trips I actually took.</div>
+  <div class="diary"><div class="diary-n">01</div><div><div class="diary-tag">Europe &middot; 2025</div><div class="diary-h">Proof That Europe Still Has Hidden Gems Nobody Talks About</div><div class="diary-m">Sicily &middot; 10 days &middot; Full itinerary</div><div class="diary-r">Read the Full Story &rarr;</div></div></div>
+  <div class="diary"><div class="diary-n">02</div><div><div class="diary-tag">Spain &middot; Day Trip</div><div class="diary-h">The Mountain 1 Hour from Barcelona Everyone Skips</div><div class="diary-m">Montserrat &middot; What most people miss</div><div class="diary-r">Read the Full Story &rarr;</div></div></div>
+  <div class="diary"><div class="diary-n">03</div><div><div class="diary-tag">Mexico &middot; 2025</div><div class="diary-h">The Cutest Hotel in Puerto Mita &mdash; Full Honest Review</div><div class="diary-m">Boutique stay &middot; Real costs</div><div class="diary-r">Read the Full Story &rarr;</div></div></div>
+  <div class="diary"><div class="diary-n">04</div><div><div class="diary-tag">Caribbean Cruise</div><div class="diary-h">How I Saved $800 on a Caribbean Cruise Booking Through InteleTravel</div><div class="diary-m">5 nights &middot; Cabin upgrade &middot; Full breakdown</div><div class="diary-r">Read the Full Story &rarr;</div></div></div>
+  <div class="btn btn-o btn-full">Read All Trip Stories</div>
+</div>
+<!-- TESTIMONIALS -->
+<div class="sw">
+  <div class="ey">Client Stories</div>
+  <div class="h2">What Travelers Say<br><em>After Booking with Val</em></div>
+  <div class="honest-note"><strong>Honest note:</strong> Real reviews from family and friends I have personally planned trips for. Verified Google reviews coming as my client base grows.</div>
+  <div class="testi"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="testi-tx">Val planned our entire Tulum trip &mdash; flights, resort, excursions, everything. I did not lift a finger. Three kids under 6 and it was the most relaxing vacation we have ever had. And it cost us nothing extra.</div><div class="testi-row"><div class="av av1">&#x1F469;</div><div><div class="testi-nm">Melissa R. <span class="tsrc">Family &middot; Tulum</span></div><div class="testi-trip">Spring 2025 &middot; 5-night trip</div></div></div></div>
+  <div class="testi"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="testi-tx">She saved us over $800 on our Caribbean cruise and upgraded our cabin without me even asking. I will never book a trip on my own again.</div><div class="testi-row"><div class="av av2">&#x1F469;</div><div><div class="testi-nm">Angela T. <span class="tsrc">Solo &middot; Caribbean</span></div><div class="testi-trip">Cruise &middot; Winter 2024</div></div></div></div>
+  <div class="testi"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="testi-tx">She found a boutique Santorini hotel not on any booking site. Going back next year &mdash; Val is booking it again.</div><div class="testi-row"><div class="av av3">&#x1F468;</div><div><div class="testi-nm">James &amp; Sofia K. <span class="tsrc">Honeymoon &middot; Greece</span></div><div class="testi-trip">Honeymoon 2025</div></div></div></div>
+</div>
+<!-- AFFILIATES -->
+<div class="ss">
+  <div class="ey">Val&rsquo;s Picks</div>
+  <div class="h2">Gear &amp; Tools <em>I Actually Use</em></div>
+  <div class="bd">Products I personally bring on every trip. Some are affiliate links &mdash; I earn a small commission at no cost to you.</div>
+  <div class="aff"><div class="aff-ico ai-l">&#x1F9F3;</div><div class="aff-r"><div class="aff-br">Away Travel</div><div class="aff-nm">The Carry-On</div><div class="aff-dc">Built-in battery, lifetime warranty.</div></div><a href="#" class="aff-lk">Shop &rarr;</a></div>
+  <div class="aff"><div class="aff-ico ai-i">&#x1F6E1;</div><div class="aff-r"><div class="aff-br">Travel Guard</div><div class="aff-nm">Trip Insurance</div><div class="aff-dc">Non-negotiable for international travel.</div></div><a href="#" class="aff-lk">Quote &rarr;</a></div>
+  <div class="aff"><div class="aff-ico ai-s">&#x1F4F1;</div><div class="aff-r"><div class="aff-br">Airalo</div><div class="aff-nm">Travel eSIM</div><div class="aff-dc">No data fees. Code TRAVELBYVAL saves $3.</div></div><a href="#" class="aff-lk">$3 Off &rarr;</a></div>
+  <div class="aff"><div class="aff-ico ai-c">&#x1F4B3;</div><div class="aff-r"><div class="aff-br">Chase Sapphire</div><div class="aff-nm">Travel Card</div><div class="aff-dc">Best card for points. No foreign fees.</div></div><a href="#" class="aff-lk">Apply &rarr;</a></div>
+</div>
+<!-- EMAIL -->
+<div class="sdr">
+  <div class="ey ey-lt">The Val Tribe</div>
+  <div class="h2 h2-lt">Real Travel.<br><em>Real Advice.</em></div>
+  <div class="bdl">Hidden gem alerts, cruise deals, and weekly travel finds. One email per week. No spam.</div>
+  <div class="email-row"><div class="email-in">your@email.com</div><div class="email-sub">Join Free</div></div>
+</div>
+<!-- TRUST -->
+<div class="sol">
+  <div class="trust">
+    <div class="ti"><div class="ti-icon">&#10003;</div><div class="ti-lbl">100% Free</div></div>
+    <div class="ti"><div class="ti-icon">&#x1F6F3;</div><div class="ti-lbl">All Cruise Lines</div></div>
+    <div class="ti"><div class="ti-icon">&#x1F3C6;</div><div class="ti-lbl">Certified</div></div>
+    <div class="ti"><div class="ti-icon">&#x1F4AC;</div><div class="ti-lbl">24hr Reply</div></div>
+  </div>
+</div>
+<!-- FINAL CTA -->
+<div class="sbr2" style="text-align:center;">
+  <div class="ey ey-lt" style="justify-content:center;">&#10022; Ready to Book?</div>
+  <div class="h2 h2-lt">Let Me Plan Your<br><em>Perfect Trip. Free.</em></div>
+  <div class="bdl">Every detail handled. You show up and enjoy. Completely free. Always.</div>
+  <div class="btn-row" style="justify-content:center;">
+    <div class="btn btn-p">&#10022; Book My Free Trip &rarr;</div>
+    <div class="btn btn-g">Request a Quote</div>
+  </div>
+</div>
+<!-- SEO -->
+<div class="sw">
+  <div class="ey">Find Val</div>
+  <div class="h2" style="font-size:18px;">St. Pete Travel Advisor<br><em>Hidden Gems &middot; Family &middot; Honeymoon</em></div>
+  <div class="bd" style="font-size:9px;line-height:1.9;">Valeria Delgado is a certified InteleTravel advisor in St. Petersburg, FL, specializing in hidden gems, family vacations, honeymoons, all-inclusive resorts, and cruises across the Caribbean, Mediterranean, and Alaska &mdash; at zero cost to the traveler.</div>
+</div>
+<!-- FOOTER INTEL -->
+<div class="ft-intel">
+  <div class="ft-intel-eyebrow">Certified Independent Advisor</div>
+  <div class="ft-intel-name">InteleTravel</div>
+  <div class="ft-intel-rule"></div>
+  <div class="ft-accreds"><div class="ft-ab">ARC</div><div class="ft-ab">IATAN</div><div class="ft-ab">CLIA</div><div class="ft-ab">Ensemble</div><div class="ft-ab">BBB A+</div></div>
+  <div class="ft-body">The world&rsquo;s oldest and largest host travel agency &mdash; 30+ years, recognized by every major hotel, cruise line, and airline worldwide.</div>
+</div>
+<!-- FOOTER -->
+<div class="ft">
+  <div class="ft-mono"><span>V</span></div>
+  <div class="ft-logo">Travels by Val</div>
+  <div class="ft-tagline">Hidden gems, real itineraries, all things travel.</div>
+  <div class="ft-sub">&#10022; InteleTravel Certified &middot; St. Pete, Florida</div>
+  <div class="ft-rule"></div>
+  <div class="ft-links">
+    <a href="#" class="ft-link">Home</a><a href="#destinations" class="ft-link">Destinations</a>
+    <a href="#cruises" class="ft-link">Cruises</a><a href="#journal" class="ft-link">Journal</a>
+    <a href="#picks" class="ft-link">Val&rsquo;s Picks</a><a href="#book" class="ft-link">Book a Trip</a>
+    <a href="#contact" class="ft-link">Contact</a>
+  </div>
+  <div class="ft-divider"></div>
+  <div class="ft-contact">
+    <a href="mailto:valeriadelgado995@gmail.com">valeriadelgado995@gmail.com</a>
+    <div class="ft-area">Serving travelers from St. Petersburg, Tampa Bay &amp; nationwide &mdash; planning trips worldwide.</div>
+  </div>
+  <div class="ft-divider"></div>
+  <div class="ft-fine"><strong>&copy; 2025 Travels by Val</strong> &middot; Valeria Delgado<br>InteleTravel Certified Independent Advisor &middot; St. Petersburg, FL<br>Advisor services are always free to clients</div>
+</div>
+</div></div></div>
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="panel">
+    <div class="panel-title">&#10022; <span>This Build</span></div>
+    <div class="edge"><div class="edot">&#10003;</div><div class="etxt"><strong>Gradient hero restored</strong> &mdash; exact terracotta radial gradient from the reference screenshot. No photo in the hero.</div></div>
+    <div class="edge"><div class="edot">&#10003;</div><div class="etxt"><strong>Val&rsquo;s photo replaces the circled InteleTravel block</strong> &mdash; her real photo (European bridge, cypress trees) sits right after the stats, with her name and InteleTravel certification overlaid. The ARC/IATAN/CLIA badges sit as a compact strip underneath, followed by one clean trust sentence.</div></div>
+    <div class="edge"><div class="edot">&#10003;</div><div class="etxt"><strong>No socials in footer</strong> &mdash; clean nav links only.</div></div>
+    <div class="edge"><div class="edot">&#10003;</div><div class="etxt"><strong>Photo gallery</strong> after Destinations &mdash; 6-slot Wix placeholder grid for Val to upload her real travel photos.</div></div>
+    <div class="edge"><div class="edot">&#10003;</div><div class="etxt"><strong>Last bio sentence removed</strong> &mdash; ends at &ldquo;You pay nothing extra.&rdquo;</div></div>
+  </div>
+  <div class="panel">
+    <div class="panel-title">&#10022; <span>Lola SEO Audit</span></div>
+    <div class="seo-r"><div class="seo-k">Title + Meta</div><div class="seo-bw"><div class="seo-b" style="width:96%"></div></div><div class="seo-s">96</div></div>
+    <div class="seo-r"><div class="seo-k">Schema Markup</div><div class="seo-bw"><div class="seo-b" style="width:92%"></div></div><div class="seo-s">92</div></div>
+    <div class="seo-r"><div class="seo-k">Local Keywords</div><div class="seo-bw"><div class="seo-b" style="width:90%"></div></div><div class="seo-s">90</div></div>
+    <div class="seo-r"><div class="seo-k">Content Depth</div><div class="seo-bw"><div class="seo-b" style="width:94%"></div></div><div class="seo-s">94</div></div>
+    <div class="seo-r"><div class="seo-k">Cruise Signals</div><div class="seo-bw"><div class="seo-b" style="width:88%"></div></div><div class="seo-s">88</div></div>
+    <div class="seo-r"><div class="seo-k">GBP / LocalBiz</div><div class="seo-bw"><div class="seo-b" style="width:28%;background:#5A2A10"></div></div><div class="seo-s" style="color:#8B4A2A">28</div></div>
+    <div class="pl"></div>
+    <div style="padding:10px;background:rgba(184,88,53,.07);border:1px solid rgba(184,88,53,.15);border-radius:6px;">
+      <div style="font-family:'Josefin Sans',sans-serif;font-size:7px;letter-spacing:2px;text-transform:uppercase;color:#B85835;margin-bottom:5px;">Next: Google Business Profile</div>
+      <div style="font-family:'Raleway',sans-serif;font-size:8.5px;font-weight:600;color:#6A5438;line-height:1.75;">After 3 real bookings, create GBP. &ldquo;Free travel advisor St Pete FL&rdquo; + cruise services. Unlocks map pack. +30 SEO points.</div>
     </div>
-  </footer>
-  <script>
-  (function(){
-    var f=document.getElementById('trf'),w=document.getElementById('tf');
-    if(!f||!w)return;
-    function panel(id){return f.querySelector('[data-p="'+id+'"]');}
-    function step(n){return w.querySelector('[data-s="'+n+'"]');}
-    function go(from,to){
-      var a=panel(from),b=panel(to);
-      if(!b)return;
-      if(a)a.classList.remove('on');
-      b.classList.add('on');
-      for(var i=1;i<=3;i++){
-        var s=step(i);if(!s)continue;
-        s.classList.remove('on','done');
-        if(typeof to==='number'){if(i<to)s.classList.add('done');if(i===to)s.classList.add('on');}
-      }
-      w.scrollIntoView({behavior:'smooth',block:'start'});
-    }
-    function valid(p){
-      var ok=true;
-      p.querySelectorAll('[required]').forEach(function(el){
-        if(!el.value.trim()){
-          ok=false;el.style.borderColor='#B85835';
-          el.addEventListener('input',function fix(){el.style.borderColor='';el.removeEventListener('input',fix);},{once:true});
-        }
-      });
-      return ok;
-    }
-    w.querySelectorAll('[data-from]').forEach(function(btn){
-      btn.addEventListener('click',function(){var n=+btn.dataset.from;if(valid(panel(n)))go(n,n+1);});
-    });
-    w.querySelectorAll('[data-to]').forEach(function(btn){
-      btn.addEventListener('click',function(){var n=+btn.dataset.to;go(n+1,n);});
-    });
-    f.addEventListener('submit',function(e){
-      e.preventDefault();
-      var p3=panel(3),sb=p3.querySelector('[type=submit]');
-      if(!valid(p3))return;
-      sb.textContent='Sending…';sb.disabled=true;
-      fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}})
-        .then(function(r){if(r.ok){go(3,'done');w.querySelector('.step-bar').style.display='none';}else throw 0;})
-        .catch(function(){sb.textContent='✦ Send My Free Trip Request →';sb.disabled=false;});
-    });
-  })();
-  </script>
+  </div>
+  <div class="panel">
+    <div class="panel-title">&#10022; <span>Revenue Stack</span></div>
+    <div style="font-family:'Josefin Sans',sans-serif;font-size:7px;letter-spacing:2px;text-transform:uppercase;color:#2E1A08;margin-bottom:8px;">Stream 1 &middot; InteleTravel</div>
+    <div class="am"><div class="am-i">&#x2708;</div><div><div class="am-nm">Land Bookings</div><div class="am-rv">$150&ndash;800+ per trip</div></div></div>
+    <div class="am"><div class="am-i">&#x1F6F3;</div><div><div class="am-nm">Cruise Bookings</div><div class="am-rv">$200&ndash;1,200+ per cabin</div></div></div>
+    <div class="pl"></div>
+    <div style="font-family:'Josefin Sans',sans-serif;font-size:7px;letter-spacing:2px;text-transform:uppercase;color:#2E1A08;margin-bottom:8px;">Stream 2 &middot; Affiliates</div>
+    <div class="am"><div class="am-i">&#x1F4B3;</div><div><div class="am-nm">Chase Sapphire</div><div class="am-rv">$100&ndash;200 per approval</div></div></div>
+    <div class="am"><div class="am-i">&#x1F6E1;</div><div><div class="am-nm">Travel Insurance</div><div class="am-rv">$20&ndash;60 per policy</div></div></div>
+    <div class="pl"></div>
+    <div style="display:flex;justify-content:space-between;align-items:baseline;">
+      <div style="font-family:'Josefin Sans',sans-serif;font-size:7px;letter-spacing:2px;text-transform:uppercase;color:#2E1A08;">Month 6 Target</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#B85835;">$2K&ndash;5K</div>
+    </div>
+  </div>
+</div>
+</div></div>
 </body>
-</html>
+  </html>

@@ -12,18 +12,52 @@
   // Mobile nav
   var toggle = document.querySelector(".nav-toggle");
   var links = document.querySelector(".nav-links");
+  function setMenu(open) {
+    links.classList.toggle("open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    if (header) header.classList.toggle("nav-open", open);
+    document.documentElement.classList.toggle("menu-open", open);
+  }
   if (toggle && links) {
     toggle.addEventListener("click", function () {
-      var open = links.classList.toggle("open");
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      setMenu(!links.classList.contains("open"));
     });
     links.addEventListener("click", function (e) {
-      if (e.target.tagName === "A") {
-        links.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
-      }
+      if (e.target.closest("a")) setMenu(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && links.classList.contains("open")) setMenu(false);
     });
   }
+
+  // FAQ accordion — smooth height animation on top of native <details>.
+  // Falls back to the instant native toggle when animations are unavailable.
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll(".faq-item").forEach(function (item) {
+    var summary = item.querySelector("summary");
+    var body = item.querySelector(".faq-body");
+    if (!summary || !body || typeof body.animate !== "function" || reduceMotion) return;
+    var animating = false;
+    summary.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (animating) return;
+      animating = true;
+      var cs = getComputedStyle(body);
+      var openFrame = { height: null, paddingTop: cs.paddingTop, paddingBottom: cs.paddingBottom, opacity: 1 };
+      var shutFrame = { height: "0px", paddingTop: "0px", paddingBottom: "0px", opacity: 0 };
+      if (item.open) {
+        openFrame.height = body.getBoundingClientRect().height + "px";
+        var closing = body.animate([openFrame, shutFrame], { duration: 260, easing: "ease" });
+        closing.onfinish = function () { item.open = false; animating = false; };
+      } else {
+        item.open = true;
+        openFrame.height = body.getBoundingClientRect().height + "px";
+        var opening = body.animate([shutFrame, openFrame], { duration: 320, easing: "ease" });
+        opening.onfinish = function () { animating = false; };
+      }
+    });
+  });
 
   // Scroll reveal
   if ("IntersectionObserver" in window) {

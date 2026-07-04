@@ -3,10 +3,6 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/img/dest/asia.jpg",
-      "destination": "https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=900&h=1200&q=70"
-    },
-    {
       "source": "/img/dest/caribbean.jpg",
       "destination": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&h=1200&q=70"
     },

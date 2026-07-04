@@ -17,8 +17,8 @@
   --shadow-sm: 0 2px 10px rgba(13, 27, 42, 0.06);
   --shadow-md: 0 12px 40px rgba(13, 27, 42, 0.12);
   --shadow-lg: 0 24px 70px rgba(13, 27, 42, 0.18);
-  --radius: 18px;
-  --radius-lg: 28px;
+  --radius: 14px;
+  --radius-lg: 20px;
   --serif: "Didot", "Bodoni MT", "Playfair Display", "Georgia", serif;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, "Helvetica Neue", Arial, sans-serif;
   --max: 1180px;
@@ -43,6 +43,7 @@ body {
 
 img { max-width: 100%; display: block; }
 a { color: inherit; }
+::selection { background: rgba(193,154,63,.85); color: #fff; }
 
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 
@@ -233,18 +234,15 @@ html.menu-open, html.menu-open body { overflow: hidden; }
   padding: 34px 30px; box-shadow: var(--shadow-sm);
   transition: transform .3s ease, box-shadow .3s ease;
 }
-.card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(193,154,63,.45); }
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(193,154,63,.45); }
 .card h3 { margin: 18px 0 10px; }
 .card p { color: var(--ink-mute); font-size: .98rem; }
 .card-icon {
   width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center;
   background: linear-gradient(135deg, var(--lagoon-soft), #f6efe0); color: var(--lagoon);
 }
-/* Benefit cards — icon beside text for a compact, editorial read */
-.card-benefit { display: flex; align-items: flex-start; gap: 20px; padding: 28px 26px; }
-.card-benefit .card-icon { flex: none; width: 48px; height: 48px; border-radius: 14px; }
-.card-benefit h3 { margin: 2px 0 8px; font-size: 1.2rem; }
-.card-benefit p { font-size: .95rem; }
+/* About — single editorial column, centered on wide screens */
+.about-editorial { max-width: 720px; margin: 0 auto; }
 
 /* ---------- Destination tiles ---------- */
 .dest-tile {
@@ -253,7 +251,7 @@ html.menu-open, html.menu-open body { overflow: hidden; }
   box-shadow: var(--shadow-md); transition: transform .35s ease, box-shadow .35s ease;
   background-size: cover; background-position: center;
 }
-.dest-tile:hover { transform: translateY(-8px) scale(1.01); box-shadow: var(--shadow-lg); }
+.dest-tile:hover { transform: translateY(-5px) scale(1.005); box-shadow: var(--shadow-lg); }
 .dest-tile::before {
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(9,18,29,.86) 0%, rgba(9,18,29,.25) 48%, rgba(9,18,29,0) 75%);

@@ -409,6 +409,15 @@ input:focus, select:focus, textarea:focus { border-color: var(--gold); backgroun
 .itin .days { font-size: .8rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); }
 .itin p { color: var(--ink-mute); max-width: 66ch; }
 
+/* ---------- Journal article ---------- */
+.article h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); }
+.article-meta { font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-mute); margin: 6px 0 36px; }
+.article h2 { font-size: clamp(1.35rem, 2.6vw, 1.75rem); margin: 36px 0 10px; color: var(--ink-soft); }
+.article p { color: var(--ink-mute); margin-bottom: 18px; font-size: 1.05rem; max-width: 68ch; }
+.article .eyebrow { color: var(--gold); }
+.article .script { color: var(--gold); }
+.article .breadcrumbs, .article .breadcrumbs a { color: var(--ink-mute); }
+
 /* ---------- CTA band ---------- */
 .cta-band {
   background:

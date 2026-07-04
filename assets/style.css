@@ -62,14 +62,6 @@ h3 { font-size: clamp(1.25rem, 2.4vw, 1.6rem); }
 }
 .eyebrow::before { content: ""; width: 34px; height: 1px; background: var(--gold); }
 
-/* Script accent — handwritten touch for editorial warmth */
-.script {
-  font-family: "Great Vibes", "Snell Roundhand", "Savoye LET", cursive;
-  font-style: normal; font-weight: 400;
-  font-size: clamp(1.7rem, 3vw, 2.3rem);
-  color: var(--gold); line-height: 1.25; letter-spacing: .02em;
-}
-
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
@@ -194,7 +186,6 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 .hero .eyebrow { color: var(--gold-soft); }
 .hero h1 { max-width: 15ch; margin: 22px 0 14px; }
 .hero h1 em { font-style: italic; color: var(--gold-soft); }
-.hero .script { color: var(--gold-soft); margin-bottom: 18px; }
 .hero .lede { color: rgba(255,255,255,.82); margin-bottom: 38px; }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 54px; }
 .hero-trust { display: flex; flex-wrap: wrap; gap: 14px 34px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.18); }
@@ -368,14 +359,20 @@ input:focus, select:focus, textarea:focus { border-color: var(--gold); backgroun
   border-bottom: 1px solid rgba(255,255,255,.14);
 }
 .footer-cta h3 { color: #fff; font-size: clamp(1.5rem, 3vw, 2.1rem); }
-.footer-cta .script { font-size: 1.5rem; }
 /* Comfortable tap targets without changing the visual rhythm */
 .site-footer ul { gap: 2px; }
 .site-footer li a { display: inline-block; padding: 7px 0; }
 .footer-bottom span { padding: 4px 0; }
 .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 54px; }
 @media (max-width: 880px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  /* Mobile footer: brand and contact span full width, link columns pair up */
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 26px 18px; }
+  .footer-grid > div:first-child, .footer-grid > div:last-child { grid-column: 1 / -1; }
+  .footer-cta { flex-direction: column; align-items: stretch; text-align: left; gap: 18px; padding-bottom: 34px; margin-bottom: 36px; }
+  .footer-cta .btn { width: 100%; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; font-size: .82rem; }
+}
 .site-footer h4 { color: #fff; font-size: .85rem; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 18px; }
 .site-footer ul { list-style: none; display: grid; gap: 11px; }
 .site-footer a { color: rgba(255,255,255,.78); text-decoration: none; font-size: .95rem; }
@@ -415,7 +412,6 @@ input:focus, select:focus, textarea:focus { border-color: var(--gold); backgroun
 .article h2 { font-size: clamp(1.35rem, 2.6vw, 1.75rem); margin: 36px 0 10px; color: var(--ink-soft); }
 .article p { color: var(--ink-mute); margin-bottom: 18px; font-size: 1.05rem; max-width: 68ch; }
 .article .eyebrow { color: var(--gold); }
-.article .script { color: var(--gold); }
 .article .breadcrumbs, .article .breadcrumbs a { color: var(--ink-mute); }
 
 /* ---------- CTA band ---------- */

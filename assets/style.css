@@ -414,7 +414,50 @@ input:focus, select:focus, textarea:focus { border-color: var(--gold); backgroun
 /* ---------- Reveal animations ---------- */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.in { opacity: 1; transform: none; }
+/* Cascade within grids for a livelier scroll */
+.grid > .reveal:nth-child(2) { transition-delay: .07s; }
+.grid > .reveal:nth-child(3) { transition-delay: .14s; }
+.grid > .reveal:nth-child(4) { transition-delay: .21s; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+
+/* ---------- Gallery gating ---------- */
+/* The gallery stays hidden until real photos exist in /photos/ —
+   site.js probes for them and reveals the section when one loads. */
+#gallery[hidden] { display: none; }
+
+/* ---------- Mobile compaction — tighter rhythm, less dead space ---------- */
+@media (max-width: 700px) {
+  .section { padding: 58px 0; }
+  .section-head { margin-bottom: 32px; }
+  .card { padding: 26px 22px; }
+  .card h3 { margin: 14px 0 8px; }
+  .grid { gap: 16px; }
+  #about .grid-2 { gap: 34px !important; }
+  .hero-inner { padding-top: 124px; padding-bottom: 72px; }
+  .hero-ctas { margin-bottom: 34px; gap: 12px; }
+  .hero-ctas .btn { flex: 1 1 100%; }
+  .hero-trust { gap: 12px 22px; padding-top: 20px; }
+  .step { padding: 0 0 36px 66px; }
+  .steps { max-width: none; }
+  .footer-grid { gap: 30px; margin-bottom: 40px; }
+  .accred-band .wrap { gap: 8px 28px; }
+}
+
+/* ---------- Mobile destination carousel — swipe instead of stack ---------- */
+@media (max-width: 620px) {
+  .grid-4:has(.dest-tile), .grid-3:has(.dest-tile) {
+    grid-template-columns: none;
+    grid-auto-flow: column; grid-auto-columns: 76%;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    margin: 0 -24px; padding: 2px 24px 16px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .grid-4:has(.dest-tile)::-webkit-scrollbar,
+  .grid-3:has(.dest-tile)::-webkit-scrollbar { display: none; }
+  .dest-tile { scroll-snap-align: center; min-height: 320px; }
+  .dest-tile.tall { min-height: 360px; }
+}
 
 .skip-link {
   position: absolute; left: -9999px; top: 12px; z-index: 200;

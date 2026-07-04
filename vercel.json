@@ -2,30 +2,73 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/img/dest/caribbean.jpg", "destination": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&h=1200&q=70" },
-    { "source": "/img/dest/europe.jpg", "destination": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=900&h=1200&q=70" },
-    { "source": "/img/dest/hawaii.jpg", "destination": "https://images.unsplash.com/photo-1505852679233-d9fd70aff56d?auto=format&fit=crop&w=900&h=1200&q=70" },
-    { "source": "/img/dest/alaska.jpg", "destination": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&h=1200&q=70" },
-    { "source": "/img/dest/mexico.jpg", "destination": "https://images.unsplash.com/photo-1512813195386-6cf811ad3542?auto=format&fit=crop&w=900&h=1200&q=70" },
-    { "source": "/img/dest/disney.jpg", "destination": "https://images.unsplash.com/photo-1524008279394-3aed4643b30b?auto=format&fit=crop&w=900&h=1200&q=70" },
-    { "source": "/img/dest/cruises.jpg", "destination": "https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=900&h=1200&q=70" },
-    { "source": "/img/dest/honeymoons.jpg", "destination": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=900&h=1200&q=70" }
+    {
+      "source": "/img/dest/asia.jpg",
+      "destination": "https://images.unsplash.com/photo-1480796927426-f609979314bd?auto=format&fit=crop&w=900&h=1200&q=70"
+    },
+    {
+      "source": "/img/dest/caribbean.jpg",
+      "destination": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&h=1200&q=70"
+    },
+    {
+      "source": "/img/dest/hawaii.jpg",
+      "destination": "https://images.unsplash.com/photo-1505852679233-d9fd70aff56d?auto=format&fit=crop&w=900&h=1200&q=70"
+    },
+    {
+      "source": "/img/dest/alaska.jpg",
+      "destination": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&h=1200&q=70"
+    },
+    {
+      "source": "/img/dest/mexico.jpg",
+      "destination": "https://images.unsplash.com/photo-1512813195386-6cf811ad3542?auto=format&fit=crop&w=900&h=1200&q=70"
+    },
+    {
+      "source": "/img/dest/disney.jpg",
+      "destination": "https://images.unsplash.com/photo-1524008279394-3aed4643b30b?auto=format&fit=crop&w=900&h=1200&q=70"
+    },
+    {
+      "source": "/img/dest/cruises.jpg",
+      "destination": "https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=900&h=1200&q=70"
+    },
+    {
+      "source": "/img/dest/honeymoons.jpg",
+      "destination": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=900&h=1200&q=70"
+    }
   ],
   "headers": [
     {
       "source": "/assets/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=600, stale-while-revalidate=86400" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=600, stale-while-revalidate=86400"
+        }
+      ]
     },
     {
       "source": "/img/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=2592000" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=2592000"
+        }
+      ]
     },
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
     }
   ]

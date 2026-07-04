@@ -171,7 +171,6 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 @media (hover: none) {
   .card:hover, .dest-tile:hover, .btn:hover { transform: none; }
   .dest-tile:hover::after { opacity: 0; }
-  .gallery-item:hover img { transform: none; }
 }
 
 /* ---------- Hero ---------- */
@@ -277,11 +276,19 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 .g-disney    { background-image: linear-gradient(150deg,#3b2f6b 0%,#6b4f9e 45%,#c77bb4 78%,#f5cfe0 100%); }
 .g-cruise    { background-image: linear-gradient(160deg,#0d2c4a 0%,#155e8a 45%,#4aa6c4 78%,#d7ecf3 100%); }
 .g-honeymoon { background-image: linear-gradient(150deg,#5c2540 0%,#96455f 45%,#d98a76 78%,#f7d9bd 100%); }
-.g-spain     { background-image: linear-gradient(150deg,#7c2d2d 0%,#c05a35 45%,#e9a13b 78%,#f6dfa4 100%); }
-.g-italy     { background-image: linear-gradient(150deg,#25455c 0%,#4f7a72 45%,#c9a15c 78%,#f2e3bd 100%); }
-.g-tahoe     { background-image: linear-gradient(160deg,#14324a 0%,#2b6b8a 45%,#7cc0d8 78%,#e8f4f8 100%); }
-.g-chicago   { background-image: linear-gradient(150deg,#1d2733 0%,#3d5166 45%,#8aa3b8 78%,#e6d9b8 100%); }
 .photo-layer { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* Destination tile photography — served via /img/dest/ rewrites;
+   the gradient beneath each remains the automatic fallback. */
+.dest-tile.g-caribbean { background-image: url("/img/dest/caribbean.jpg"), linear-gradient(150deg,#0e7d8f 0%,#28b1b5 45%,#7fd6c2 80%,#f3e8c9 100%); }
+.dest-tile.g-europe    { background-image: url("/img/dest/europe.jpg"), linear-gradient(155deg,#3a3f63 0%,#6f6289 45%,#c98a6d 78%,#f0cfa0 100%); }
+.dest-tile.g-hawaii    { background-image: url("/img/dest/hawaii.jpg"), linear-gradient(150deg,#0b5d52 0%,#159a80 40%,#f2a65a 78%,#f7d488 100%); }
+.dest-tile.g-alaska    { background-image: url("/img/dest/alaska.jpg"), linear-gradient(160deg,#1c2f4a 0%,#3b6b8f 45%,#9fc4d8 80%,#eef5f8 100%); }
+.dest-tile.g-mexico    { background-image: url("/img/dest/mexico.jpg"), linear-gradient(150deg,#88372b 0%,#c96f3f 42%,#eeb960 75%,#f9e6bd 100%); }
+.dest-tile.g-disney    { background-image: url("/img/dest/disney.jpg"), linear-gradient(150deg,#3b2f6b 0%,#6b4f9e 45%,#c77bb4 78%,#f5cfe0 100%); }
+.dest-tile.g-cruise    { background-image: url("/img/dest/cruises.jpg"), linear-gradient(160deg,#0d2c4a 0%,#155e8a 45%,#4aa6c4 78%,#d7ecf3 100%); }
+.dest-tile.g-honeymoon { background-image: url("/img/dest/honeymoons.jpg"), linear-gradient(150deg,#5c2540 0%,#96455f 45%,#d98a76 78%,#f7d9bd 100%); }
+
 
 /* ---------- Process timeline ---------- */
 .steps { counter-reset: step; display: grid; gap: 0; }
@@ -338,21 +345,6 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 }
 .faq-item[open] summary::after { transform: rotate(45deg); }
 .faq-item .faq-body { padding: 0 4px 26px; color: var(--ink-mute); max-width: 68ch; }
-
-/* ---------- Gallery ---------- */
-.gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-@media (max-width: 900px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
-.gallery-item {
-  position: relative; border-radius: var(--radius); overflow: hidden; min-height: 300px;
-  background-size: cover; background-position: center; box-shadow: var(--shadow-sm);
-}
-.gallery-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
-.gallery-item:hover img { transform: scale(1.05); }
-.gallery-item figcaption {
-  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 42px 18px 16px;
-  color: #fff; font-family: var(--serif); font-style: italic; font-size: 1.1rem; letter-spacing: .02em;
-  background: linear-gradient(to top, rgba(9,18,29,.8), transparent);
-}
 
 /* ---------- Inquiry form ---------- */
 .inquiry-panel {
@@ -426,11 +418,6 @@ input:focus, select:focus, textarea:focus { border-color: var(--gold); backgroun
 .grid > .reveal:nth-child(3) { transition-delay: .14s; }
 .grid > .reveal:nth-child(4) { transition-delay: .21s; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
-
-/* ---------- Gallery gating ---------- */
-/* The gallery stays hidden until real photos exist in /photos/ —
-   site.js probes for them and reveals the section when one loads. */
-#gallery[hidden] { display: none; }
 
 /* ---------- Mobile compaction — tighter rhythm, less dead space ---------- */
 @media (max-width: 700px) {

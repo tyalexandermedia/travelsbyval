@@ -31,6 +31,21 @@
     });
   }
 
+  // Gallery gating — the photos 404 until they're uploaded to /photos/,
+  // so keep the section hidden and reveal it only when a real photo loads.
+  var gallery = document.getElementById("gallery");
+  if (gallery) {
+    gallery.hidden = true;
+    var shown = false;
+    ["spain", "italy", "tahoe", "chicago"].forEach(function (name) {
+      var probe = new Image();
+      probe.onload = function () {
+        if (!shown) { shown = true; gallery.hidden = false; }
+      };
+      probe.src = "/photos/" + name + ".jpg";
+    });
+  }
+
   // FAQ accordion — smooth height animation on top of native <details>.
   // Falls back to the instant native toggle when animations are unavailable.
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;

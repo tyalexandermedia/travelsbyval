@@ -59,6 +59,47 @@
     });
   });
 
+  // Reading progress bar + back-to-top (injected so every page gets them)
+  var bar = document.createElement("div");
+  bar.className = "scroll-progress";
+  document.body.appendChild(bar);
+  var toTop = document.createElement("button");
+  toTop.className = "to-top";
+  toTop.setAttribute("aria-label", "Back to top");
+  toTop.innerHTML = "&uarr;";
+  document.body.appendChild(toTop);
+  toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+  var ticking = false;
+  function paintScroll() {
+    ticking = false;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = "scaleX(" + (max > 0 ? Math.min(window.scrollY / max, 1) : 0) + ")";
+    toTop.classList.toggle("show", window.scrollY > 900);
+  }
+  window.addEventListener("scroll", function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(paintScroll); }
+  }, { passive: true });
+  paintScroll();
+
+  // Swipe dots under the mobile destination carousel
+  document.querySelectorAll(".grid-3, .grid-4").forEach(function (car) {
+    if (!car.querySelector(".dest-tile")) return;
+    var tiles = car.querySelectorAll(".dest-tile");
+    if (tiles.length < 2) return;
+    var dots = document.createElement("div");
+    dots.className = "carousel-dots";
+    dots.setAttribute("aria-hidden", "true");
+    tiles.forEach(function () { dots.appendChild(document.createElement("span")); });
+    car.parentNode.insertBefore(dots, car.nextSibling);
+    function paintDots() {
+      if (car.scrollWidth <= car.clientWidth) return;
+      var idx = Math.round(car.scrollLeft / (car.scrollWidth - car.clientWidth) * (tiles.length - 1));
+      dots.querySelectorAll("span").forEach(function (d, i) { d.classList.toggle("on", i === idx); });
+    }
+    car.addEventListener("scroll", paintDots, { passive: true });
+    paintDots();
+  });
+
   // Scroll reveal
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(

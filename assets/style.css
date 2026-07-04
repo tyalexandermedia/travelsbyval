@@ -74,7 +74,13 @@ h3 { font-size: clamp(1.25rem, 2.4vw, 1.6rem); }
 .btn:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible {
   outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 6px;
 }
-.btn-gold { background: linear-gradient(135deg, var(--gold), #a8842f); color: #fff; box-shadow: 0 8px 24px rgba(193,154,63,.35); }
+.btn-gold { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--gold), #a8842f); color: #fff; box-shadow: 0 8px 24px rgba(193,154,63,.35); }
+.btn-gold::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: -70%; width: 45%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.35), transparent);
+  transform: skewX(-20deg); transition: left .7s ease;
+}
+.btn-gold:hover::after { left: 130%; }
 .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(193,154,63,.45); }
 .btn-ghost { background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.45); backdrop-filter: blur(8px); }
 .btn-ghost:hover { background: rgba(255,255,255,.22); transform: translateY(-2px); }
@@ -171,10 +177,19 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 .hero {
   position: relative; min-height: 100svh; display: flex; align-items: center;
   color: #fff; overflow: hidden;
+  background: linear-gradient(165deg, #0d1b2a 0%, #14293f 42%, #1d3a52 68%, #0f2233 100%);
+}
+/* Cinematic slow drift on the hero photo (scrim rides the same layer) */
+.hero::after {
+  content: ""; position: absolute; inset: -4%; z-index: 0;
   background:
     linear-gradient(180deg, rgba(13,27,42,.66) 0%, rgba(13,27,42,.42) 46%, rgba(13,27,42,.9) 100%),
-    url("/img/europe-hero.jpg") center 58% / cover no-repeat,
-    linear-gradient(165deg, #0d1b2a 0%, #14293f 42%, #1d3a52 68%, #0f2233 100%);
+    url("/img/europe-hero.jpg") center 58% / cover no-repeat;
+  animation: heroDrift 28s ease-in-out infinite alternate;
+}
+@keyframes heroDrift {
+  from { transform: scale(1) translateY(0); }
+  to   { transform: scale(1.06) translateY(-1.4%); }
 }
 /* Editorial hairline frame, inset from the viewport edge */
 .hero::before {
@@ -478,6 +493,33 @@ input:focus, select:focus, textarea:focus { border-color: var(--gold); backgroun
   .grid-3:has(.dest-tile)::-webkit-scrollbar { display: none; }
   .dest-tile { scroll-snap-align: center; min-height: 320px; }
   .dest-tile.tall { min-height: 360px; }
+}
+
+/* ---------- Scroll delight ---------- */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 2.5px; z-index: 220;
+  background: linear-gradient(90deg, var(--gold), var(--gold-soft));
+  transform: scaleX(0); transform-origin: left; pointer-events: none;
+}
+.to-top {
+  position: fixed; right: 18px; bottom: 18px; z-index: 150;
+  width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(193,154,63,.65);
+  background: rgba(13,27,42,.92); color: var(--gold-soft);
+  font-family: var(--serif); font-size: 1.15rem; cursor: pointer;
+  display: grid; place-items: center;
+  opacity: 0; visibility: hidden; transform: translateY(8px);
+  transition: opacity .3s ease, transform .3s ease, visibility 0s .3s;
+  box-shadow: var(--shadow-md);
+}
+.to-top.show { opacity: 1; visibility: visible; transform: none; transition: opacity .3s ease, transform .3s ease, visibility 0s; }
+.carousel-dots { display: none; }
+@media (max-width: 620px) {
+  .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 2px; }
+  .carousel-dots span {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(13,27,42,.18); transition: background .25s ease, transform .25s ease;
+  }
+  .carousel-dots span.on { background: var(--gold); transform: scale(1.25); }
 }
 
 .skip-link {

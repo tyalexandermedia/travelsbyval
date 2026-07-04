@@ -387,6 +387,13 @@ input:focus, select:focus, textarea:focus { border-color: var(--gold); backgroun
 .dest-hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(9,18,29,.88), rgba(9,18,29,.24) 55%, rgba(9,18,29,.35)); }
 .dest-hero.g-europe { background-image: url("/img/dest/europe.jpg"), linear-gradient(155deg,#3a3f63 0%,#6f6289 45%,#c98a6d 78%,#f0cfa0 100%); }
 .dest-hero.g-asia { background-image: url("/img/dest/asia.jpg"), linear-gradient(150deg,#3b1f3f 0%,#7a3b5e 45%,#e0793f 78%,#f6d9a0 100%); }
+.dest-hero.g-caribbean { background-image: url("/img/dest/caribbean.jpg"), linear-gradient(150deg,#0e7d8f 0%,#28b1b5 45%,#7fd6c2 80%,#f3e8c9 100%); }
+.dest-hero.g-hawaii    { background-image: url("/img/dest/hawaii.jpg"), linear-gradient(150deg,#0b5d52 0%,#159a80 40%,#f2a65a 78%,#f7d488 100%); }
+.dest-hero.g-alaska    { background-image: url("/img/dest/alaska.jpg"), linear-gradient(160deg,#1c2f4a 0%,#3b6b8f 45%,#9fc4d8 80%,#eef5f8 100%); }
+.dest-hero.g-mexico    { background-image: url("/img/dest/mexico.jpg"), linear-gradient(150deg,#88372b 0%,#c96f3f 42%,#eeb960 75%,#f9e6bd 100%); }
+.dest-hero.g-disney    { background-image: url("/img/dest/disney.jpg"), linear-gradient(150deg,#3b2f6b 0%,#6b4f9e 45%,#c77bb4 78%,#f5cfe0 100%); }
+.dest-hero.g-cruise    { background-image: url("/img/dest/cruises.jpg"), linear-gradient(160deg,#0d2c4a 0%,#155e8a 45%,#4aa6c4 78%,#d7ecf3 100%); }
+.dest-hero.g-honeymoon { background-image: url("/img/dest/honeymoons.jpg"), linear-gradient(150deg,#5c2540 0%,#96455f 45%,#d98a76 78%,#f7d9bd 100%); }
 .dest-hero::after {
   content: ""; position: absolute; inset: 14px; pointer-events: none;
   border: 1px solid rgba(217,188,116,.2); border-radius: 12px;

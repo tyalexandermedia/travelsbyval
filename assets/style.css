@@ -26,6 +26,8 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+/* Lock the page to vertical-only scrolling — nothing may wiggle it sideways */
+html, body { overflow-x: hidden; overflow-x: clip; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -165,6 +167,13 @@ h3 { font-size: clamp(1.25rem, 2.4vw, 1.6rem); }
 /* Lock page scroll while the mobile menu is open */
 html.menu-open, html.menu-open body { overflow: hidden; }
 
+/* Touch devices: no hover-lift transforms — taps and swipes must not jiggle the layout */
+@media (hover: none) {
+  .card:hover, .dest-tile:hover, .btn:hover { transform: none; }
+  .dest-tile:hover::after { opacity: 0; }
+  .gallery-item:hover img { transform: none; }
+}
+
 /* ---------- Hero ---------- */
 .hero {
   position: relative; min-height: 100svh; display: flex; align-items: center;
@@ -208,18 +217,6 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 .section-head.center .lede { margin-left: auto; margin-right: auto; }
 .section-head.center .eyebrow::after { content: ""; width: 34px; height: 1px; background: var(--gold); }
 .section-ink .lede { color: rgba(255,255,255,.78); }
-
-/* ---------- Accreditation band ---------- */
-.accred-band {
-  background: var(--ink); color: rgba(255,255,255,.88); padding: 20px 0;
-  border-top: 1px solid rgba(193,154,63,.3); border-bottom: 1px solid rgba(193,154,63,.3);
-}
-.accred-band .wrap { display: flex; flex-wrap: wrap; gap: 10px 44px; align-items: center; justify-content: center; }
-.accred-band span {
-  display: inline-flex; align-items: center; gap: 12px;
-  font-size: .72rem; font-weight: 700; letter-spacing: .24em; text-transform: uppercase;
-}
-.accred-band span::before { content: "\2726"; color: var(--gold); font-size: .72em; }
 
 /* ---------- Cards / Grids ---------- */
 .grid { display: grid; gap: 26px; }
@@ -430,6 +427,8 @@ input:focus, select:focus, textarea:focus { border-color: var(--gold); backgroun
 
 /* ---------- Mobile compaction — tighter rhythm, less dead space ---------- */
 @media (max-width: 700px) {
+  /* Hero hugs its content — no dead void beneath the trust list */
+  .hero { min-height: auto; }
   .section { padding: 58px 0; }
   .section-head { margin-bottom: 32px; }
   .card { padding: 26px 22px; }
@@ -443,7 +442,6 @@ input:focus, select:focus, textarea:focus { border-color: var(--gold); backgroun
   .step { padding: 0 0 36px 66px; }
   .steps { max-width: none; }
   .footer-grid { gap: 30px; margin-bottom: 40px; }
-  .accred-band .wrap { gap: 8px 28px; }
 }
 
 /* ---------- Mobile destination carousel — swipe instead of stack ---------- */
@@ -451,7 +449,10 @@ input:focus, select:focus, textarea:focus { border-color: var(--gold); backgroun
   .grid-4:has(.dest-tile), .grid-3:has(.dest-tile) {
     grid-template-columns: none;
     grid-auto-flow: column; grid-auto-columns: 76%;
-    overflow-x: auto; scroll-snap-type: x mandatory;
+    overflow-x: auto; overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 24px;
+    overscroll-behavior-x: contain;
     margin: 0 -24px; padding: 2px 24px 16px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;

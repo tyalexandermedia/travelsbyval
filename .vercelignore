@@ -1,0 +1,4 @@
+build-destinations.js
+patch-real-facts.py
+node_modules
+.vercel

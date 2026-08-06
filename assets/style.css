@@ -202,6 +202,16 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 .hero h1 { max-width: 15ch; margin: 22px 0 14px; }
 .hero h1 em { font-style: italic; color: var(--gold-soft); }
 .hero .lede { color: rgba(255,255,255,.82); margin-bottom: 38px; }
+/* Advisor chip — Val's portrait above the CTA */
+.advisor-chip { display: flex; align-items: center; gap: 14px; margin: 4px 0 26px; }
+.advisor-chip img {
+  width: 76px; height: 76px; border-radius: 50%; object-fit: cover;
+  border: 2px solid var(--gold-soft); box-shadow: 0 6px 22px rgba(0,0,0,.35);
+}
+.advisor-chip div { display: grid; gap: 1px; }
+.advisor-chip strong { font-family: var(--serif); font-size: 1.08rem; font-weight: 500; color: #fff; }
+.advisor-chip span { font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-soft); }
+
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 54px; }
 .hero-trust { display: flex; flex-wrap: wrap; gap: 14px 34px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.18); }
 .hero-trust li { list-style: none; display: flex; align-items: center; gap: 10px; font-size: .95rem; color: rgba(255,255,255,.85); }

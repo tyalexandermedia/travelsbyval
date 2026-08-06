@@ -377,7 +377,7 @@ input:focus, select:focus, textarea:focus { border-color: var(--gold); backgroun
 .form-note { font-size: .84rem; color: var(--ink-mute); }
 
 /* ---------- Footer ---------- */
-.site-footer { background: var(--ink); color: rgba(255,255,255,.78); padding: 54px 0 28px; border-top: 1px solid rgba(193,154,63,.5); }
+.site-footer { background: var(--ink); color: rgba(255,255,255,.78); padding: 46px 0 24px; border-top: 1px solid rgba(193,154,63,.5); line-height: 1.45; }
 .footer-cta {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px;
   padding-bottom: 32px; margin-bottom: 36px;
@@ -385,23 +385,23 @@ input:focus, select:focus, textarea:focus { border-color: var(--gold); backgroun
 }
 .footer-cta h3 { color: #fff; font-size: clamp(1.5rem, 3vw, 2.1rem); }
 /* Comfortable tap targets without changing the visual rhythm */
-.site-footer li a { display: inline-block; padding: 4px 0; font-size: .92rem; }
+.site-footer li a { display: inline-block; padding: 3px 0; font-size: .92rem; }
 .footer-bottom span { padding: 4px 0; }
-.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 34px; margin-bottom: 38px; }
+.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 28px; margin-bottom: 26px; }
 @media (max-width: 880px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) {
   /* Mobile footer: brand and contact span full width, link columns pair up */
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 18px 16px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 14px 16px; }
   .footer-grid > div:first-child, .footer-grid > div:last-child { grid-column: 1 / -1; }
   .footer-cta { flex-direction: column; align-items: stretch; text-align: left; gap: 14px; padding-bottom: 26px; margin-bottom: 26px; }
   .footer-cta .btn { width: 100%; }
   .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; font-size: .82rem; }
 }
-.site-footer h4 { color: #fff; font-size: .8rem; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 8px; }
+.site-footer h4 { color: #fff; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 6px; }
 .site-footer ul { list-style: none; display: grid; gap: 0; }
 .site-footer a { color: rgba(255,255,255,.78); text-decoration: none; font-size: .95rem; }
 .site-footer a:hover { color: var(--gold-soft); }
-.footer-bottom { border-top: 1px solid rgba(255,255,255,.14); padding-top: 20px; font-size: .85rem; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.14); padding-top: 16px; font-size: .85rem; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
 
 /* ---------- Destination page ---------- */
 .dest-hero {

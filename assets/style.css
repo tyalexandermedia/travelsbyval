@@ -203,13 +203,13 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 .hero h1 em { font-style: italic; color: var(--gold-soft); }
 .hero .lede { color: rgba(255,255,255,.82); margin-bottom: 38px; }
 /* Advisor chip — Val's portrait above the CTA */
-.advisor-chip { display: flex; align-items: center; gap: 14px; margin: 4px 0 26px; }
+.advisor-chip { display: flex; align-items: center; gap: 18px; margin: 6px 0 28px; }
 .advisor-chip img {
-  width: 76px; height: 76px; border-radius: 50%; object-fit: cover;
-  border: 2px solid var(--gold-soft); box-shadow: 0 6px 22px rgba(0,0,0,.35);
+  width: 118px; height: 118px; border-radius: 50%; object-fit: cover;
+  border: 3px solid var(--gold-soft); box-shadow: 0 8px 28px rgba(0,0,0,.4);
 }
 .advisor-chip div { display: grid; gap: 1px; }
-.advisor-chip strong { font-family: var(--serif); font-size: 1.08rem; font-weight: 500; color: #fff; }
+.advisor-chip strong { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; color: #fff; }
 .advisor-chip span { font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-soft); }
 
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 54px; }

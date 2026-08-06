@@ -205,7 +205,7 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 /* Advisor chip — Val's portrait above the CTA */
 .advisor-chip { display: flex; align-items: center; gap: 18px; margin: 6px 0 28px; }
 .advisor-chip img {
-  width: 118px; height: 118px; border-radius: 50%; object-fit: cover;
+  width: 140px; height: 140px; border-radius: 50%; object-fit: cover;
   border: 3px solid var(--gold-soft); box-shadow: 0 8px 28px rgba(0,0,0,.4);
 }
 .advisor-chip div { display: grid; gap: 1px; }

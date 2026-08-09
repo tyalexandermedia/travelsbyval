@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://travelsbyval.com/sitemap.xml
+Sitemap: https://www.travelsbyval.com/sitemap.xml

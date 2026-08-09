@@ -453,6 +453,10 @@ input:focus, select:focus, textarea:focus { border-color: var(--gold); backgroun
 .form-rescue-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
 .form-rescue .btn { flex: 1 1 190px; padding: 13px 20px; min-height: 44px; font-size: .74rem; }
 .form-rescue .form-note { margin: 0; }
+.linkish {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font: inherit; color: var(--lagoon); text-decoration: underline;
+}
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--ink); color: rgba(255,255,255,.78); padding: 46px 0 24px; border-top: 1px solid rgba(193,154,63,.5); line-height: 1.45; }

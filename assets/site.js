@@ -249,24 +249,33 @@
       ok.style.color = tone === "bad" ? "#a8342b" : "var(--lagoon)";
     }
 
-    // Rescue panel: shown after a mailto attempt so a blocked handler
-    // never means a silently lost lead.
-    function showRescue(body) {
+    // Delivery panel. With no backend configured we never gamble on a
+    // mailto: handler existing — we hand the visitor two links that always
+    // work, both pre-filled with everything they just typed.
+    function showRescue(body, subject) {
       var panel = document.getElementById("form-rescue");
       if (!panel) {
         panel = document.createElement("div");
         panel.id = "form-rescue";
         panel.className = "form-rescue";
         panel.innerHTML =
-          '<p><strong>Email app didn&rsquo;t open?</strong> Send it to me directly:</p>' +
+          '<p><strong>One last step:</strong> pick how to send it. Everything you typed is already attached.</p>' +
           '<div class="form-rescue-actions">' +
-          '<button type="button" class="btn btn-ink" data-copy>Copy my details</button>' +
-          '<a class="btn btn-ink" data-wa target="_blank" rel="noopener">Send on WhatsApp</a>' +
+          '<a class="btn btn-gold" data-wa target="_blank" rel="noopener">Send on WhatsApp</a>' +
+          '<a class="btn btn-ink" data-mail>Send by email</a>' +
           '</div>' +
-          '<p class="form-note">Or email <a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a></p>';
+          '<p class="form-note"><button type="button" class="linkish" data-copy>Copy my details</button> ' +
+          'or email <a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a></p>';
         form.querySelector(".full:last-child").appendChild(panel);
       }
       panel.querySelector("[data-wa]").href = WHATSAPP + encodeURIComponent(body);
+      panel.querySelector("[data-mail]").href = "mailto:" + CONTACT_EMAIL +
+        "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      panel.querySelectorAll("[data-wa],[data-mail]").forEach(function (a) {
+        a.addEventListener("click", function () {
+          track("inquiry_sent", { via: a.hasAttribute("data-wa") ? "whatsapp" : "email" });
+        });
+      });
       var copyBtn = panel.querySelector("[data-copy]");
       copyBtn.onclick = function () {
         var done = function () { copyBtn.textContent = "Copied!"; };
@@ -274,6 +283,7 @@
         else done();
       };
       panel.hidden = false;
+      panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
 
     form.addEventListener("submit", function (e) {
@@ -305,8 +315,8 @@
           say("Thank you! Your inquiry is in. I'll reply personally, usually within one business day.");
           track("inquiry_sent", { via: "form" });
         }).catch(function () {
-          say("That didn't go through. Please use WhatsApp or email below.", "bad");
-          showRescue(body);
+          say("That didn't go through. Send it directly instead:", "bad");
+          showRescue(body, subject);
         }).then(function () {
           btn.disabled = false;
           btn.textContent = label;
@@ -314,11 +324,8 @@
         return;
       }
 
-      window.location.href = "mailto:" + CONTACT_EMAIL +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(body);
-      say("Your email draft is ready, just hit send!");
-      setTimeout(function () { showRescue(body); }, 1500);
+      say("Your trip details are ready to send.");
+      showRescue(body, subject);
     });
   }
 })();

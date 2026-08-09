@@ -138,32 +138,6 @@
     inquiryForm.addEventListener("submit", function () { track("inquiry_submit", {}); });
   }
 
-  // Sticky mobile booking bar: appears once the hero is behind you and
-  // steps aside when the inquiry form itself is on screen.
-  var stickyBar = document.createElement("div");
-  stickyBar.className = "sticky-cta";
-  stickyBar.innerHTML = '<a class="btn btn-gold" href="#inquiry" data-cta-place="sticky">' +
-    CTA_COPY[variant].sticky + "</a><small>Free consultation. Free to book through me.</small>";
-  document.body.appendChild(stickyBar);
-  stickyBar.querySelector("a").addEventListener("click", function () {
-    track("cta_click", { place: "sticky" });
-  });
-  var inquirySection = document.getElementById("inquiry");
-  var hero = document.querySelector(".hero");
-  function paintBar() {
-    var past = hero ? window.scrollY > hero.offsetHeight * 0.75 : window.scrollY > 600;
-    var atForm = false;
-    if (inquirySection) {
-      var r = inquirySection.getBoundingClientRect();
-      atForm = r.top < window.innerHeight && r.bottom > 0;
-    }
-    var show = past && !atForm;
-    stickyBar.classList.toggle("show", show);
-    document.body.classList.toggle("has-sticky-cta", show);
-  }
-  window.addEventListener("scroll", paintBar, { passive: true });
-  paintBar();
-
   // ---- Review slider -------------------------------------------------
   document.querySelectorAll("[data-slider]").forEach(function (slider) {
     var track_ = slider.querySelector("[data-track]");

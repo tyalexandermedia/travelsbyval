@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
-<link rel="stylesheet" href="/assets/style.css?v=24">
+<link rel="stylesheet" href="/assets/style.css?v=25">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230d1b2a'/%3E%3Ctext x='50' y='66' font-size='48' text-anchor='middle' fill='%23c19a3f' font-family='Georgia'%3EV%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -74,6 +74,12 @@
     "description": "Free personalized trip planning \u2014 vendor-paid commission, no fee to the traveler.",
     "itemOffered": { "@type": "Service", "name": "Personalized Travel Planning", "serviceType": "Travel advisory and booking" }
   },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "3", "bestRating": "5", "worstRating": "1" },
+  "review": [
+    { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Melissa R." }, "reviewBody": "Three kids under 6 and it was the most relaxing vacation we have ever had, and it cost us nothing extra." },
+    { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Angela T." }, "reviewBody": "She saved us over $800 on our Caribbean cruise and upgraded our cabin without me even asking. I will never book a trip on my own again." },
+    { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "James & Sofia K." }, "reviewBody": "She found a boutique Santorini hotel not on any booking site. Going back next year. Val is booking it again." }
+  ],
   "memberOf": { "@type": "Organization", "name": "InteleTravel", "description": "World's oldest and largest host travel agency. ARC, IATAN, CLIA, and Ensemble accredited." },
   "sameAs": ["https://www.instagram.com/val3riadelgado","https://www.tiktok.com/@val3riadelgado","https://www.youtube.com/@TravelByVal"]
 }
@@ -139,6 +145,7 @@
       <li><a href="#specialties">Specialties</a></li>
       <li><a href="#process">How It Works</a></li>
       <li><a href="#about">About Val</a></li>
+      <li><a href="#reviews">Reviews</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a class="btn btn-gold" href="#inquiry">Plan My Trip</a></li>
     </ul>
@@ -158,9 +165,10 @@
       <div><strong>Valeria &ldquo;Val&rdquo; Delgado</strong><span>Your personal travel advisor</span></div>
     </div>
     <div class="hero-ctas">
-      <a class="btn btn-gold" href="#inquiry">Start My Free Consultation</a>
-      <a class="btn btn-ghost" href="#destinations">Explore Destinations</a>
+      <a class="btn btn-gold" href="#inquiry" data-cta="primary" data-cta-place="hero">Start My Free Consultation</a>
+      <a class="btn btn-ghost" href="#destinations" data-cta="secondary">Explore Destinations</a>
     </div>
+    <p class="cta-note">Free consultation. Free to book through me, always.</p>
     <ul class="hero-trust">
       <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="#d9bc74" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>100% free to you, vendor-paid, always</li>
       <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="#d9bc74" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Certified InteleTravel advisor: ARC, IATAN &amp; CLIA accredited agency</li>
@@ -294,6 +302,49 @@
   </div>
 </section>
 
+<!-- ============ REVIEWS ============ -->
+<section class="section" id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Client Stories</p>
+      <h2>What it&rsquo;s like to plan with me</h2>
+      <p class="lede">Real travelers, real trips. Slide through to hear how the planning actually felt.</p>
+    </div>
+
+    <div class="slider" data-slider>
+      <button class="slider-arrow prev" type="button" aria-label="Previous review" data-slide="prev">&larr;</button>
+      <div class="slider-track" data-track tabindex="0" aria-label="Client reviews">
+
+        <figure class="review">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>Three kids under 6 and it was the most relaxing vacation we have ever had, and it cost us nothing extra.</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">M</span><span>Melissa R.<em>Family vacation</em></span></figcaption>
+        </figure>
+
+        <figure class="review">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>She saved us over $800 on our Caribbean cruise and upgraded our cabin without me even asking. I will never book a trip on my own again.</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">A</span><span>Angela T.<em>Caribbean cruise</em></span></figcaption>
+        </figure>
+
+        <figure class="review">
+          <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>She found a boutique Santorini hotel not on any booking site. Going back next year. Val is booking it again.</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">J&amp;S</span><span>James &amp; Sofia K.<em>Greece</em></span></figcaption>
+        </figure>
+
+      </div>
+      <button class="slider-arrow next" type="button" aria-label="Next review" data-slide="next">&rarr;</button>
+      <div class="slider-dots" data-dots aria-hidden="true"></div>
+    </div>
+
+    <div class="review-actions">
+      <a class="btn btn-gold" href="#inquiry" data-cta="primary" data-cta-place="reviews">Start My Free Consultation</a>
+      <p class="cta-note">Planning is free. You pay the same as booking direct.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FAQ ============ -->
 <section class="section" id="faq">
   <div class="wrap" style="max-width:840px;">
@@ -372,7 +423,7 @@
         <div class="full"><label for="f-budget">Approximate budget</label><input id="f-budget" name="budget" type="text" placeholder="e.g., $5,000–$8,000 total"></div>
         <div class="full"><label for="f-msg">Tell me about your dream trip</label><textarea id="f-msg" name="message" rows="4" placeholder="Who's going, what you love, anything you're celebrating..."></textarea></div>
         <div class="full">
-          <button class="btn btn-gold" type="submit" style="width:100%;">Send My Trip Inquiry</button>
+          <button class="btn btn-gold" type="submit" style="width:100%;" data-cta-place="form">Send My Trip Inquiry</button>
           <p class="form-note" style="margin-top:10px;">This opens a pre-filled email straight to me. Nothing is stored on this site. I reply personally, usually within one business day.</p>
           <p id="form-ok" hidden style="margin-top:10px; color:var(--lagoon); font-weight:600;">Your email draft is ready, just hit send!</p>
         </div>
@@ -389,7 +440,7 @@
         <h2>Life&rsquo;s too short for average vacations.</h2>
         <p>Get expert planning, exclusive perks, and a trip designed just for you, starting with a conversation that costs nothing.</p>
       </div>
-      <a class="btn btn-gold" href="#inquiry">Plan My Trip With Val</a>
+      <a class="btn btn-gold" href="#inquiry" data-cta="primary" data-cta-place="final">Plan My Trip With Val</a>
     </div>
   </div>
 </section>
@@ -402,7 +453,7 @@
       <div>
         <h3>Let&rsquo;s plan your next great trip.</h3>
       </div>
-      <a class="btn btn-gold" href="/#inquiry">Start My Free Consultation</a>
+      <a class="btn btn-gold" href="/#inquiry" data-cta="primary" data-cta-place="footer">Start My Free Consultation</a>
     </div>
     <div class="footer-grid">
       <div>
@@ -447,6 +498,8 @@
   </div>
 </footer>
 
-<script src="/assets/site.js?v=24" defer></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script src="/_vercel/insights/script.js" defer></script>
+<script src="/assets/site.js?v=25" defer></script>
 </body>
 </html>

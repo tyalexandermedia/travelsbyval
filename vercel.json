@@ -67,18 +67,5 @@
         }
       ]
     }
-  ],
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.travelsbyval.com"
-        }
-      ],
-      "destination": "https://travelsbyval.com/$1",
-      "permanent": true
-    }
   ]
 }

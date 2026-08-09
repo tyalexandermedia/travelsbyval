@@ -100,6 +100,114 @@
     paintDots();
   });
 
+  // ---- CTA A/B test -------------------------------------------------
+  // Variant A keeps the consultation framing, B uses the booking framing.
+  // Assignment is sticky per visitor so the copy never changes underfoot.
+  var CTA_COPY = {
+    a: { primary: "Start My Free Consultation", sticky: "Book My Free Consultation" },
+    b: { primary: "Book My Trip Here", sticky: "Book My Trip Here" }
+  };
+  var variant;
+  try {
+    variant = localStorage.getItem("tbv_cta");
+    if (variant !== "a" && variant !== "b") {
+      variant = Math.random() < 0.5 ? "a" : "b";
+      localStorage.setItem("tbv_cta", variant);
+    }
+  } catch (e) { variant = "a"; }
+  document.documentElement.setAttribute("data-cta-variant", variant);
+
+  function track(name, extra) {
+    var payload = { variant: variant };
+    for (var k in extra) { if (extra.hasOwnProperty(k)) payload[k] = extra[k]; }
+    if (typeof window.va === "function") window.va("event", { name: name, data: payload });
+    if (typeof window.gtag === "function") window.gtag("event", name, payload);
+  }
+  track("cta_view", {});
+
+  document.querySelectorAll('[data-cta="primary"]').forEach(function (el) {
+    el.textContent = CTA_COPY[variant].primary;
+  });
+  document.querySelectorAll("[data-cta-place]").forEach(function (el) {
+    el.addEventListener("click", function () {
+      track("cta_click", { place: el.getAttribute("data-cta-place") });
+    });
+  });
+  var inquiryForm = document.querySelector("#inquiry form");
+  if (inquiryForm) {
+    inquiryForm.addEventListener("submit", function () { track("inquiry_submit", {}); });
+  }
+
+  // Sticky mobile booking bar: appears once the hero is behind you and
+  // steps aside when the inquiry form itself is on screen.
+  var stickyBar = document.createElement("div");
+  stickyBar.className = "sticky-cta";
+  stickyBar.innerHTML = '<a class="btn btn-gold" href="#inquiry" data-cta-place="sticky">' +
+    CTA_COPY[variant].sticky + "</a><small>Free consultation. Free to book through me.</small>";
+  document.body.appendChild(stickyBar);
+  stickyBar.querySelector("a").addEventListener("click", function () {
+    track("cta_click", { place: "sticky" });
+  });
+  var inquirySection = document.getElementById("inquiry");
+  var hero = document.querySelector(".hero");
+  function paintBar() {
+    var past = hero ? window.scrollY > hero.offsetHeight * 0.75 : window.scrollY > 600;
+    var atForm = false;
+    if (inquirySection) {
+      var r = inquirySection.getBoundingClientRect();
+      atForm = r.top < window.innerHeight && r.bottom > 0;
+    }
+    var show = past && !atForm;
+    stickyBar.classList.toggle("show", show);
+    document.body.classList.toggle("has-sticky-cta", show);
+  }
+  window.addEventListener("scroll", paintBar, { passive: true });
+  paintBar();
+
+  // ---- Review slider -------------------------------------------------
+  document.querySelectorAll("[data-slider]").forEach(function (slider) {
+    var track_ = slider.querySelector("[data-track]");
+    var dots = slider.querySelector("[data-dots]");
+    var slides = track_ ? track_.children : [];
+    if (!track_ || slides.length < 2) return;
+
+    function step() { return slides[0].getBoundingClientRect().width + 24; }
+    function index() { return Math.round(track_.scrollLeft / step()); }
+    function go(i) {
+      var max = slides.length - 1;
+      track_.scrollTo({ left: Math.max(0, Math.min(i, max)) * step(), behavior: "smooth" });
+    }
+
+    slider.querySelectorAll("[data-slide]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        go(index() + (btn.getAttribute("data-slide") === "next" ? 1 : -1));
+      });
+    });
+
+    if (dots) {
+      Array.prototype.forEach.call(slides, function (_, i) {
+        var d = document.createElement("button");
+        d.type = "button";
+        d.setAttribute("aria-label", "Go to review " + (i + 1));
+        d.addEventListener("click", function () { go(i); });
+        dots.appendChild(d);
+      });
+    }
+    function paintDots() {
+      if (!dots) return;
+      var cur = index();
+      Array.prototype.forEach.call(dots.children, function (d, i) {
+        d.classList.toggle("on", i === cur);
+      });
+    }
+    track_.addEventListener("scroll", paintDots, { passive: true });
+    track_.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); go(index() + 1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); go(index() - 1); }
+    });
+    paintDots();
+  });
+
   // Scroll reveal
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(

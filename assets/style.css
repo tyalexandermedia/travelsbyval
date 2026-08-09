@@ -279,28 +279,31 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 #destinations .dest-tile { min-height: 380px; }
 
 /* Gradient art fallbacks — real photos layer on top when present */
-.g-caribbean { background-image: linear-gradient(150deg,#0e7d8f 0%,#28b1b5 45%,#7fd6c2 80%,#f3e8c9 100%); }
-.g-europe    { background-image: linear-gradient(155deg,#3a3f63 0%,#6f6289 45%,#c98a6d 78%,#f0cfa0 100%); }
-.g-hawaii    { background-image: linear-gradient(150deg,#0b5d52 0%,#159a80 40%,#f2a65a 78%,#f7d488 100%); }
-.g-alaska    { background-image: linear-gradient(160deg,#1c2f4a 0%,#3b6b8f 45%,#9fc4d8 80%,#eef5f8 100%); }
-.g-mexico    { background-image: linear-gradient(150deg,#88372b 0%,#c96f3f 42%,#eeb960 75%,#f9e6bd 100%); }
-.g-disney    { background-image: linear-gradient(150deg,#3b2f6b 0%,#6b4f9e 45%,#c77bb4 78%,#f5cfe0 100%); }
-.g-cruise    { background-image: linear-gradient(160deg,#0d2c4a 0%,#155e8a 45%,#4aa6c4 78%,#d7ecf3 100%); }
-.g-honeymoon { background-image: linear-gradient(150deg,#5c2540 0%,#96455f 45%,#d98a76 78%,#f7d9bd 100%); }
-.g-asia      { background-image: linear-gradient(150deg,#3b1f3f 0%,#7a3b5e 45%,#e0793f 78%,#f6d9a0 100%); }
+.g-caribbean { --tile-grad: linear-gradient(150deg,#0e7d8f 0%,#28b1b5 45%,#7fd6c2 80%,#f3e8c9 100%); background-image: var(--tile-grad); }
+.g-europe { --tile-grad: linear-gradient(155deg,#3a3f63 0%,#6f6289 45%,#c98a6d 78%,#f0cfa0 100%); background-image: var(--tile-grad); }
+.g-hawaii { --tile-grad: linear-gradient(150deg,#0b5d52 0%,#159a80 40%,#f2a65a 78%,#f7d488 100%); background-image: var(--tile-grad); }
+.g-alaska { --tile-grad: linear-gradient(160deg,#1c2f4a 0%,#3b6b8f 45%,#9fc4d8 80%,#eef5f8 100%); background-image: var(--tile-grad); }
+.g-mexico { --tile-grad: linear-gradient(150deg,#88372b 0%,#c96f3f 42%,#eeb960 75%,#f9e6bd 100%); background-image: var(--tile-grad); }
+.g-disney { --tile-grad: linear-gradient(150deg,#3b2f6b 0%,#6b4f9e 45%,#c77bb4 78%,#f5cfe0 100%); background-image: var(--tile-grad); }
+.g-cruise { --tile-grad: linear-gradient(160deg,#0d2c4a 0%,#155e8a 45%,#4aa6c4 78%,#d7ecf3 100%); background-image: var(--tile-grad); }
+.g-honeymoon { --tile-grad: linear-gradient(150deg,#5c2540 0%,#96455f 45%,#d98a76 78%,#f7d9bd 100%); background-image: var(--tile-grad); }
+.g-asia { --tile-grad: linear-gradient(150deg,#3b1f3f 0%,#7a3b5e 45%,#e0793f 78%,#f6d9a0 100%); background-image: var(--tile-grad); }
 .photo-layer { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
 /* Destination tile photography — served via /img/dest/ rewrites;
    the gradient beneath each remains the automatic fallback. */
-.dest-tile.g-caribbean { background-image: url("/img/dest/caribbean.jpg"), linear-gradient(150deg,#0e7d8f 0%,#28b1b5 45%,#7fd6c2 80%,#f3e8c9 100%); }
-.dest-tile.g-europe    { background-image: url("/img/dest/europe.jpg"), linear-gradient(155deg,#3a3f63 0%,#6f6289 45%,#c98a6d 78%,#f0cfa0 100%); }
-.dest-tile.g-hawaii    { background-image: url("/img/dest/hawaii.jpg"), linear-gradient(150deg,#0b5d52 0%,#159a80 40%,#f2a65a 78%,#f7d488 100%); }
-.dest-tile.g-alaska    { background-image: url("/img/dest/alaska.jpg"), linear-gradient(160deg,#1c2f4a 0%,#3b6b8f 45%,#9fc4d8 80%,#eef5f8 100%); }
-.dest-tile.g-mexico    { background-image: url("/img/dest/mexico.jpg"), linear-gradient(150deg,#88372b 0%,#c96f3f 42%,#eeb960 75%,#f9e6bd 100%); }
-.dest-tile.g-disney    { background-image: url("/img/dest/disney.jpg"), linear-gradient(150deg,#3b2f6b 0%,#6b4f9e 45%,#c77bb4 78%,#f5cfe0 100%); }
-.dest-tile.g-cruise    { background-image: url("/img/dest/cruises.jpg"), linear-gradient(160deg,#0d2c4a 0%,#155e8a 45%,#4aa6c4 78%,#d7ecf3 100%); }
-.dest-tile.g-honeymoon { background-image: url("/img/dest/honeymoons.jpg"), linear-gradient(150deg,#5c2540 0%,#96455f 45%,#d98a76 78%,#f7d9bd 100%); }
-.dest-tile.g-asia      { background-image: url("/img/dest/asia.jpg"), linear-gradient(150deg,#3b1f3f 0%,#7a3b5e 45%,#e0793f 78%,#f6d9a0 100%); }
+/* Tile photos load only as tiles approach the viewport (site.js adds .photo).
+   The gradient underneath is always painted, so tiles never appear empty. */
+.dest-tile.photo { background-image: var(--tile-photo), var(--tile-grad); }
+.dest-tile.g-caribbean { --tile-photo: url("/img/dest/caribbean.jpg"); }
+.dest-tile.g-europe { --tile-photo: url("/img/dest/europe.jpg"); }
+.dest-tile.g-hawaii { --tile-photo: url("/img/dest/hawaii.jpg"); }
+.dest-tile.g-alaska { --tile-photo: url("/img/dest/alaska.jpg"); }
+.dest-tile.g-mexico { --tile-photo: url("/img/dest/mexico.jpg"); }
+.dest-tile.g-disney { --tile-photo: url("/img/dest/disney.jpg"); }
+.dest-tile.g-cruise { --tile-photo: url("/img/dest/cruises.jpg"); }
+.dest-tile.g-honeymoon { --tile-photo: url("/img/dest/honeymoons.jpg"); }
+.dest-tile.g-asia { --tile-photo: url("/img/dest/asia.jpg"); }
 
 
 /* ---------- Process timeline ---------- */
@@ -440,6 +443,16 @@ input:focus, select:focus, textarea:focus { border-color: var(--gold); backgroun
   .slider-arrow { display: none; }
   .review { padding: 26px 22px; }
 }
+
+.form-rescue {
+  margin-top: 16px; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--lagoon-soft);
+}
+.form-rescue p { font-size: .92rem; margin-bottom: 10px; }
+.form-rescue-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
+.form-rescue .btn { flex: 1 1 190px; padding: 13px 20px; min-height: 44px; font-size: .74rem; }
+.form-rescue .form-note { margin: 0; }
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--ink); color: rgba(255,255,255,.78); padding: 46px 0 24px; border-top: 1px solid rgba(193,154,63,.5); line-height: 1.45; }

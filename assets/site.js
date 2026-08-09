@@ -100,6 +100,20 @@
     paintDots();
   });
 
+  // Tile photography is deferred until a tile nears the viewport. Every tile
+  // keeps its gradient meanwhile, so nothing ever renders blank.
+  var tiles = document.querySelectorAll(".dest-tile");
+  if (!("IntersectionObserver" in window)) {
+    tiles.forEach(function (t) { t.classList.add("photo"); });
+  } else {
+    var photoIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("photo"); photoIO.unobserve(e.target); }
+      });
+    }, { rootMargin: "600px" });
+    tiles.forEach(function (t) { photoIO.observe(t); });
+  }
+
   // ---- CTA A/B test -------------------------------------------------
   // Variant A keeps the consultation framing, B uses the booking framing.
   // Assignment is sticky per visitor so the copy never changes underfoot.
@@ -200,16 +214,21 @@
     document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
   }
 
-  // Inquiry form → opens a pre-filled email (no backend required).
-  // Swap CONTACT_EMAIL for Val's real address before launch.
+  // ---- Inquiry form --------------------------------------------------
+  // FORM_ENDPOINT: paste a Formspree (or similar) POST URL here and the form
+  // submits for real, with an inline thank-you. Leave it empty and the form
+  // falls back to opening a pre-filled email, plus a copy/WhatsApp rescue
+  // panel for the many desktop visitors whose browser ignores mailto:.
+  var FORM_ENDPOINT = "";
   var CONTACT_EMAIL = "valeriadelgado995@gmail.com";
+  var WHATSAPP = "https://wa.me/13053393588?text=";
+
   var form = document.getElementById("inquiry-form");
   if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var f = new FormData(form);
-      var subject = "Trip inquiry — " + (f.get("destination") || "New trip") + " (" + (f.get("name") || "") + ")";
-      var body = [
+    var ok = document.getElementById("form-ok");
+
+    function summarize(f) {
+      return [
         "Name: " + (f.get("name") || ""),
         "Email: " + (f.get("email") || ""),
         "Phone: " + (f.get("phone") || ""),
@@ -221,12 +240,85 @@
         "About this trip:",
         (f.get("message") || "")
       ].join("\n");
-      window.location.href =
-        "mailto:" + CONTACT_EMAIL +
+    }
+
+    function say(msg, tone) {
+      if (!ok) return;
+      ok.hidden = false;
+      ok.textContent = msg;
+      ok.style.color = tone === "bad" ? "#a8342b" : "var(--lagoon)";
+    }
+
+    // Rescue panel: shown after a mailto attempt so a blocked handler
+    // never means a silently lost lead.
+    function showRescue(body) {
+      var panel = document.getElementById("form-rescue");
+      if (!panel) {
+        panel = document.createElement("div");
+        panel.id = "form-rescue";
+        panel.className = "form-rescue";
+        panel.innerHTML =
+          '<p><strong>Email app didn&rsquo;t open?</strong> Send it to me directly:</p>' +
+          '<div class="form-rescue-actions">' +
+          '<button type="button" class="btn btn-ink" data-copy>Copy my details</button>' +
+          '<a class="btn btn-ink" data-wa target="_blank" rel="noopener">Send on WhatsApp</a>' +
+          '</div>' +
+          '<p class="form-note">Or email <a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a></p>';
+        form.querySelector(".full:last-child").appendChild(panel);
+      }
+      panel.querySelector("[data-wa]").href = WHATSAPP + encodeURIComponent(body);
+      var copyBtn = panel.querySelector("[data-copy]");
+      copyBtn.onclick = function () {
+        var done = function () { copyBtn.textContent = "Copied!"; };
+        if (navigator.clipboard) navigator.clipboard.writeText(body).then(done, done);
+        else done();
+      };
+      panel.hidden = false;
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var f = new FormData(form);
+      var name = (f.get("name") || "").trim();
+      var email = (f.get("email") || "").trim();
+      if (!name || !email || email.indexOf("@") < 1) {
+        say("Please add your name and a valid email so I can reply.", "bad");
+        (name ? form.querySelector("#f-email") : form.querySelector("#f-name")).focus();
+        return;
+      }
+
+      var body = summarize(f);
+      var subject = "Trip inquiry: " + (f.get("destination") || "New trip") + " (" + name + ")";
+
+      if (FORM_ENDPOINT) {
+        var btn = form.querySelector('button[type="submit"]');
+        var label = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = "Sending...";
+        fetch(FORM_ENDPOINT, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: f
+        }).then(function (r) {
+          if (!r.ok) throw new Error("bad status");
+          form.reset();
+          say("Thank you! Your inquiry is in. I'll reply personally, usually within one business day.");
+          track("inquiry_sent", { via: "form" });
+        }).catch(function () {
+          say("That didn't go through. Please use WhatsApp or email below.", "bad");
+          showRescue(body);
+        }).then(function () {
+          btn.disabled = false;
+          btn.textContent = label;
+        });
+        return;
+      }
+
+      window.location.href = "mailto:" + CONTACT_EMAIL +
         "?subject=" + encodeURIComponent(subject) +
         "&body=" + encodeURIComponent(body);
-      var ok = document.getElementById("form-ok");
-      if (ok) ok.hidden = false;
+      say("Your email draft is ready, just hit send!");
+      setTimeout(function () { showRescue(body); }, 1500);
     });
   }
 })();
